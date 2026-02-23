@@ -1,40 +1,33 @@
 # Ignore build artifacts
 /_build/
+/cover/
 /deps/
+/doc/
+/.fetch
 
-# Ignore assets that are built during docker build
+# Ignore tmp and logs
+/tmp/
+*.ez
+erl_crash.dump
+
+# Ignore generated static assets (rebuilt in Docker)
 /priv/static/assets/
 /priv/static/cache_manifest.json
 
-# Ignore development and test configs
+# Ignore node_modules (npm install runs in Docker)
+/assets/node_modules/
+
+# Ignore dev/test configs
 /config/*.secret.exs
+/.elixir_ls/
 
-# Ignore Docker
-/Dockerfile*
-/.dockerignore
-
-# Ignore version control
+# Ignore git and IDE files
 .git
 .gitignore
+.dockerignore
+Dockerfile
 
-# Ignore IDE/editor files
-.elixir_ls/
-.vscode/
-*.swp
-*.swo
-*~
-
-# Ignore OS files
-.DS_Store
-Thumbs.db
-
-# Ignore CI
+# Ignore CI and docs
+*.md
+.formatter.exs
 .github/
-.gitlab-ci.yml
-
-# Ignore environment files
-.env*
-
-# Misc
-docker-compose.yml
-README*
