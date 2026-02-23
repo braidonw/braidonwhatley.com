@@ -6,11 +6,11 @@
 #   elixir --version
 #   node --version
 ARG ELIXIR_VERSION=1.19.5
-ARG OTP_VERSION=28.2
-ARG DEBIAN_VERSION=bookworm-20250317-slim
+ARG OTP_VERSION=28.3.1
+ARG DEBIAN_VERSION=trixie-20260202-slim
 
-ARG BUILDER_IMAGE="hexpm/elixir:${ELIXIR_VERSION}-erlang-${OTP_VERSION}-debian-${DEBIAN_VERSION}"
-ARG RUNNER_IMAGE="debian:${DEBIAN_VERSION}"
+ARG BUILDER_IMAGE="docker.io/hexpm/elixir:${ELIXIR_VERSION}-erlang-${OTP_VERSION}-debian-${DEBIAN_VERSION}"
+ARG RUNNER_IMAGE="docker.io/debian:${DEBIAN_VERSION}"
 
 FROM ${BUILDER_IMAGE} AS builder
 
