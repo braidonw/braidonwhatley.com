@@ -1,0 +1,40 @@
+# Ignore build artifacts
+/_build/
+/deps/
+
+# Ignore assets that are built during docker build
+/priv/static/assets/
+/priv/static/cache_manifest.json
+
+# Ignore development and test configs
+/config/*.secret.exs
+
+# Ignore Docker
+/Dockerfile*
+/.dockerignore
+
+# Ignore version control
+.git
+.gitignore
+
+# Ignore IDE/editor files
+.elixir_ls/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore CI
+.github/
+.gitlab-ci.yml
+
+# Ignore environment files
+.env*
+
+# Misc
+docker-compose.yml
+README*
