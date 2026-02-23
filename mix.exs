@@ -76,6 +76,7 @@ defmodule App.MixProject do
       "assets.setup": ["esbuild.install --if-missing", "cmd --cd assets npm install"],
       "assets.build": ["compile", "esbuild braidonwhatley", "cmd --cd assets npm run css:build"],
       "assets.deploy": [
+        "compile",
         "esbuild braidonwhatley --minify",
         "cmd --cd assets npm run css:build",
         "phx.digest"
