@@ -1,0 +1,4 @@
+.indent {
+  border-inline-start: var(--indent-size, var(--space-xs-l)) solid
+    var(--indent-color, currentColor);
+}

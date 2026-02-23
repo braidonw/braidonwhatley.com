@@ -1,0 +1,37 @@
+.corner {
+  display: block;
+  position: relative;
+  aspect-ratio: 1/1;
+  height: var(--corner-size, 100px);
+}
+
+.corner::before,
+.corner::after {
+  content: '';
+  display: block;
+  position: absolute;
+  inset: 0;
+  transition: clip-path var(--transition-bounce);
+}
+
+/* The large clip path */
+.corner::before {
+  background: var(--corner-primary-color, var(--color-light));
+  clip-path: polygon(100% 0, var(--corner-offset, 30%) 0, 100% 100%);
+}
+
+/* The small clip path */
+.corner::after {
+  background: var(--corner-secondary-color, var(--color-dark));
+  clip-path: polygon(var(--corner-offset, 30%) 0, 0 0, 100% 100%);
+}
+
+.corner[data-corner-docked] {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.corner[data-corner-theme='primary'] {
+  --corner-secondary-color: var(--color-primary);
+}
