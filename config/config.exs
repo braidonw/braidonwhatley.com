@@ -9,7 +9,7 @@ import Config
 
 config :braidonwhatley,
   namespace: App,
-  ecto_repos: [App.Repo],
+  ecto_repos: [App.Repo, Golf.Repo],
   generators: [timestamp_type: :utc_datetime, binary_id: true]
 
 # Configure the endpoint
@@ -31,6 +31,19 @@ config :braidonwhatley, AppWeb.Endpoint,
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
 config :braidonwhatley, App.Mailer, adapter: Swoosh.Adapters.Local
+
+# Golf endpoint configuration
+config :braidonwhatley, GolfWeb.Endpoint,
+  url: [host: "localhost"],
+  adapter: Bandit.PhoenixAdapter,
+  render_errors: [
+    formats: [html: GolfWeb.ErrorHTML, json: GolfWeb.ErrorJSON],
+    layout: false
+  ],
+  pubsub_server: Golf.PubSub,
+  live_view: [signing_salt: "xK9mNp3R"]
+
+config :braidonwhatley, Golf.Mailer, adapter: Swoosh.Adapters.Local
 
 # Configure esbuild (the version is required)
 config :esbuild,

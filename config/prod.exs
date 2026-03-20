@@ -6,6 +6,7 @@ import Config
 # which you should run after static files are built and
 # before starting your production server.
 config :braidonwhatley, AppWeb.Endpoint, cache_static_manifest: "priv/static/cache_manifest.json"
+config :braidonwhatley, GolfWeb.Endpoint, cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Force using SSL in production. This also sets the "strict-security-transport" header,
 # known as HSTS. If you have a health check endpoint, you may want to exclude it below.
