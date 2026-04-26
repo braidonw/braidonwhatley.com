@@ -1,0 +1,75 @@
+{
+  "font": {
+    "$type": "fontFamily",
+    "body": { "$value": "{font.base}" },
+    "heading": { "$value": "{font.hero}" },
+    "base": { "$value": ["Atkinson Hyperlegible", "system-ui", "sans-serif"] },
+    "sans": {
+      "$value": [
+        "Atkinson Hyperlegible",
+        "-apple-system",
+        "BlinkMacSystemFont",
+        "avenir next",
+        "avenir",
+        "segoe ui",
+        "helvetica neue",
+        "helvetica",
+        "Cantarell",
+        "Ubuntu",
+        "roboto",
+        "noto",
+        "arial",
+        "sans-serif"
+      ]
+    },
+    "hero": { "$value": ["Poppins", "system-ui", "sans-serif"] },
+    "mono": {
+      "$value": [
+        "ui-monospace",
+        "SFMono-Regular",
+        "Menlo",
+        "Monaco",
+        "Consolas",
+        "monospace"
+      ]
+    },
+    "weight": {
+      "$type": "fontWeight",
+      "normal": { "$value": 400 },
+      "medium": { "$value": 500 },
+      "semibold": { "$value": 600 },
+      "bold": { "$value": 700 },
+      "black": { "$value": 900 }
+    }
+  },
+  "text": {
+    "2xs": { "$value": "{size.step.-3}" },
+    "xs": { "$value": "{size.step.-2}" },
+    "sm": { "$value": "{size.step.-1}" },
+    "base": { "$value": "{size.step.0}" },
+    "lg": { "$value": "{size.step.1}" },
+    "xl": { "$value": "{size.step.2}" },
+    "2xl": { "$value": "{size.step.3}" },
+    "3xl": { "$value": "{size.step.4}" },
+    "4xl": { "$value": "{size.step.5}" },
+    "5xl": { "$value": "{size.step.6}" },
+    "6xl": { "$value": "{size.step.7}" },
+    "7xl": { "$value": "{size.step.8}" },
+    "8xl": { "$value": "{size.step.9}" },
+    "9xl": { "$value": "{size.step.10}" }
+  },
+  "leading": {
+    "$type": "number",
+    "micro": { "$value": 0.85 },
+    "flat": { "$value": 1 },
+    "fine": { "$value": 1.2 },
+    "standard": { "$value": 1.4 },
+    "loose": { "$value": 1.7 }
+  },
+  "tracking": {
+    "$type": "dimension",
+    "tight": { "$value": { "value": -0.025, "unit": "rem" } },
+    "normal": { "$value": { "value": 0, "unit": "rem" } },
+    "uppercase": { "$value": { "value": 0.04, "unit": "rem" } }
+  }
+}

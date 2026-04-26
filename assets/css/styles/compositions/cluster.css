@@ -5,7 +5,7 @@ A layout that lets you distribute items with consitent
 spacing, regardless of their size
 
 CUSTOM PROPERTIES AND CONFIGURATION
---gutter (var(--space-m)): This defines the space
+--gutter (var(--space-md)): This defines the space
 between each item.
 
 --cluster-horizontal-alignment (flex-start): How items should align
@@ -18,7 +18,7 @@ Can be any acceptable flexbox alignment value.
 .cluster {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--gutter, var(--space-m));
+  gap: var(--gutter, var(--space-md));
   justify-content: var(--cluster-horizontal-alignment, flex-start);
   align-items: var(--cluster-vertical-alignment, center);
 }

@@ -1,0 +1,106 @@
+{
+  "size": {
+    "$type": "fluidDimension",
+    "body": {
+      "$value": "{text.base}"
+    },
+    "step": {
+      "-3": {
+        "$value": {
+          "min": { "value": 0.6583, "unit": "rem" },
+          "max": { "value": 0.6945, "unit": "rem" }
+        }
+      },
+      "-2": {
+        "$value": {
+          "min": { "value": 0.7406, "unit": "rem" },
+          "max": { "value": 0.7813, "unit": "rem" }
+        }
+      },
+      "-1": {
+        "$value": {
+          "min": { "value": 0.8331, "unit": "rem" },
+          "max": { "value": 0.9375, "unit": "rem" }
+        }
+      },
+      "0": {
+        "$value": {
+          "min": { "value": 0.9375, "unit": "rem" },
+          "max": { "value": 1.125, "unit": "rem" }
+        }
+      },
+      "1": {
+        "$value": {
+          "min": { "value": 1.055, "unit": "rem" },
+          "max": { "value": 1.35, "unit": "rem" }
+        }
+      },
+      "2": {
+        "$value": {
+          "min": { "value": 1.1863, "unit": "rem" },
+          "max": { "value": 1.62, "unit": "rem" }
+        }
+      },
+      "3": {
+        "$value": {
+          "min": { "value": 1.3344, "unit": "rem" },
+          "max": { "value": 1.9438, "unit": "rem" }
+        }
+      },
+      "4": {
+        "$value": {
+          "min": { "value": 1.5013, "unit": "rem" },
+          "max": { "value": 2.3325, "unit": "rem" }
+        }
+      },
+      "5": {
+        "$value": {
+          "min": { "value": 1.6894, "unit": "rem" },
+          "max": { "value": 2.7994, "unit": "rem" }
+        }
+      },
+      "6": {
+        "$value": {
+          "min": { "value": 1.9006, "unit": "rem" },
+          "max": { "value": 3.3594, "unit": "rem" }
+        }
+      },
+      "7": {
+        "$value": {
+          "min": { "value": 2.1381, "unit": "rem" },
+          "max": { "value": 4.0313, "unit": "rem" }
+        }
+      },
+      "8": {
+        "$value": {
+          "min": { "value": 2.4056, "unit": "rem" },
+          "max": { "value": 4.8375, "unit": "rem" }
+        }
+      },
+      "9": {
+        "$value": {
+          "min": { "value": 2.7063, "unit": "rem" },
+          "max": { "value": 5.805, "unit": "rem" }
+        }
+      },
+      "10": {
+        "$value": {
+          "min": { "value": 3.0444, "unit": "rem" },
+          "max": { "value": 6.9656, "unit": "rem" }
+        }
+      },
+      "11": {
+        "$value": {
+          "min": { "value": 3.425, "unit": "rem" },
+          "max": { "value": 8.3588, "unit": "rem" }
+        }
+      },
+      "12": {
+        "$value": {
+          "min": { "value": 3.8531, "unit": "rem" },
+          "max": { "value": 10.0306, "unit": "rem" }
+        }
+      }
+    }
+  }
+}

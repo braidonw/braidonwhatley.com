@@ -5,7 +5,7 @@ A flexible layout that will create an auto-fill grid with
 configurable grid item sizes
 
 CUSTOM PROPERTIES AND CONFIGURATION
---gutter (var(--space-m)): This defines the space
+--gutter (var(--space-md)): This defines the space
 between each item.
 
 --grid-min-item-size (14rem): How large each item should be
@@ -20,7 +20,7 @@ to change how empty grid tracks are handled */
     var(--grid-placement, auto-fill),
     minmax(var(--grid-min-item-size, 16rem), 1fr)
   );
-  gap: var(--gutter, var(--space-l));
+  gap: var(--gutter, var(--space-lg));
 }
 
 /* A split 50/50 layout */

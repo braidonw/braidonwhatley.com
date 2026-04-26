@@ -44,18 +44,23 @@ RUN mkdir config
 COPY config/config.exs config/${MIX_ENV}.exs config/
 RUN mix deps.compile
 
+# copy npm package files and design tokens for assets.setup (npm install + sugarcube generate)
+COPY assets/package.json assets/package-lock.json assets/
+COPY assets/design-tokens assets/design-tokens
+
+RUN mix assets.setup
+
 COPY priv priv
+
 COPY lib lib
-COPY assets assets
-
-# install npm dependencies for PostCSS/Tailwind CSS build
-RUN cd assets && npm install
-
-# compile assets (runs: compile -> esbuild --minify -> postcss -> phx.digest)
-RUN mix assets.deploy
 
 # Compile the release
 RUN mix compile
+
+COPY assets assets
+
+# compile assets
+RUN mix assets.deploy
 
 # Changes to config/runtime.exs don't require recompiling the code
 COPY config/runtime.exs config/

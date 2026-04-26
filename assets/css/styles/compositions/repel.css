@@ -4,7 +4,7 @@ A little layout that pushes items away from each other where
 there is space in the viewport and stacks on small viewports
 
 CUSTOM PROPERTIES AND CONFIGURATION
---gutter (var(--space-m)): This defines the space
+--gutter (var(--space-md)): This defines the space
 between each item.
 
 --repel-vertical-alignment (center): How items should align vertically.
@@ -15,7 +15,7 @@ Can be any acceptable flexbox alignment value.
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: var(--repel-vertical-alignment, center);
-  gap: var(--gutter, var(--space-m));
+  gap: var(--gutter, var(--space-md));
 }
 
 .repel[data-nowrap] {

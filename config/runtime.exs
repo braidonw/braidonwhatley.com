@@ -22,7 +22,7 @@ if System.get_env("PHX_SERVER") do
 end
 
 config :braidonwhatley, AppWeb.Endpoint,
-  http: [port: String.to_integer(System.get_env("PORT", "4000"))]
+  http: [port: String.to_integer(System.get_env("PORT", "4100"))]
 
 config :braidonwhatley, GolfWeb.Endpoint,
   http: [port: String.to_integer(System.get_env("GOLF_PORT", "4001"))]

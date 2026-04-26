@@ -15,13 +15,10 @@ defmodule App.Application do
       # Start a worker by calling: App.Worker.start_link(arg)
       # {App.Worker, arg},
       # Start to serve requests, typically the last entry
-      AppWeb.Endpoint,
-      # Golf app
-      GolfWeb.Telemetry,
-      Golf.Repo,
-      {Phoenix.PubSub, name: Golf.PubSub},
-      GolfWeb.Endpoint
+      AppWeb.Endpoint
     ]
+
+    Application.started_applications()
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
@@ -34,7 +31,6 @@ defmodule App.Application do
   @impl true
   def config_change(changed, _new, removed) do
     AppWeb.Endpoint.config_change(changed, removed)
-    GolfWeb.Endpoint.config_change(changed, removed)
     :ok
   end
 end

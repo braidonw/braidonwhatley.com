@@ -5,6 +5,7 @@ config :braidonwhatley, App.Repo,
   username: "postgres",
   password: "postgres",
   hostname: "localhost",
+  port: 54322,
   database: "braidonwhatley_dev",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
@@ -26,14 +27,7 @@ config :braidonwhatley, AppWeb.Endpoint,
   secret_key_base: "lnLRU/xbYj9waQiO4FKZpnlZIKzR/fW3ClGfwfVCrqgS6wmgX0JQnm4Dio0wPCnR",
   watchers: [
     esbuild: {Esbuild, :install_and_run, [:braidonwhatley, ~w(--sourcemap=inline --watch)]},
-    npx: [
-      "postcss",
-      "css/global.css",
-      "--output",
-      "../priv/static/assets/css/app.css",
-      "--watch",
-      cd: Path.expand("../assets", __DIR__)
-    ]
+    esbuild: {Esbuild, :install_and_run, [:braidonwhatley_css, ~w(--sourcemap=inline --watch)]}
   ]
 
 # ## SSL Support
@@ -80,6 +74,7 @@ config :braidonwhatley, Golf.Repo,
   username: "postgres",
   password: "postgres",
   hostname: "localhost",
+  port: 54322,
   database: "golf_dev",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,

@@ -1,0 +1,41 @@
+/*
+FIELD SPACING UTILITY
+Provides consistent spacing for form fields and field groups
+*/
+
+/* Basic field spacing for individual form fields */
+.field-space {
+    margin-block-end: var(--field-space, var(--space-sm));
+}
+
+/* Field group spacing for related fields */
+.field-group {
+    --flow-space: var(--space-sm);
+}
+
+.field-group > * + * {
+    margin-block-start: var(--flow-space);
+}
+
+/* Compact field spacing for tighter layouts */
+.field-space[data-spacing="compact"] {
+    --field-space: var(--space-2xs);
+}
+
+/* Loose field spacing for more breathing room */
+.field-space[data-spacing="loose"] {
+    --field-space: var(--space-md);
+}
+
+/* Field group variants */
+.field-group[data-spacing="compact"] {
+    --flow-space: var(--space-2xs);
+}
+
+.field-group[data-spacing="loose"] {
+    --flow-space: var(--space-md);
+}
+
+.field-group[data-spacing="loose-xl"] {
+    --flow-space: var(--space-lg);
+}

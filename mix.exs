@@ -73,12 +73,21 @@ defmodule App.MixProject do
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
-      "assets.setup": ["esbuild.install --if-missing", "cmd --cd assets npm install"],
-      "assets.build": ["compile", "esbuild braidonwhatley", "cmd --cd assets npm run css:build"],
-      "assets.deploy": [
+      "assets.setup": [
+        "cmd --cd assets npm install",
+        "cmd --cd assets npx sugarcube generate --force --silent --resolver design-tokens/tokens.resolver.json --variables css/global/tokens.variables.gen.css --utilities css/global/tokens.utilities.gen.css",
+        "esbuild.install --if-missing"
+      ],
+      "assets.build": [
         "compile",
+        "cmd --cd assets npx sugarcube generate --force --silent --resolver design-tokens/tokens.resolver.json --variables css/global/tokens.variables.gen.css --utilities css/global/tokens.utilities.gen.css",
+        "esbuild braidonwhatley",
+        "esbuild braidonwhatley_css"
+      ],
+      "assets.deploy": [
+        "cmd --cd assets npx sugarcube generate --force --silent --resolver design-tokens/tokens.resolver.json --variables css/global/tokens.variables.gen.css --utilities css/global/tokens.utilities.gen.css",
         "esbuild braidonwhatley --minify",
-        "cmd --cd assets npm run css:build",
+        "esbuild braidonwhatley_css --minify",
         "phx.digest"
       ],
       precommit: ["compile --warnings-as-errors", "deps.unlock --unused", "format", "test"]

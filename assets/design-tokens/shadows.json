@@ -1,0 +1,68 @@
+{
+  "shadow": {
+    "$type": "shadow",
+    "xs": {
+      "$value": {
+        "offsetX": { "value": 0, "unit": "px" },
+        "offsetY": { "value": 1, "unit": "px" },
+        "blur": { "value": 2, "unit": "px" },
+        "spread": { "value": 0, "unit": "px" },
+        "color": "{color.alpha.black.05}"
+      }
+    },
+    "sm": {
+      "$value": [
+        {
+          "offsetX": { "value": 0, "unit": "px" },
+          "offsetY": { "value": 1, "unit": "px" },
+          "blur": { "value": 3, "unit": "px" },
+          "spread": { "value": 0, "unit": "px" },
+          "color": "{color.alpha.black.10}"
+        },
+        {
+          "offsetX": { "value": 0, "unit": "px" },
+          "offsetY": { "value": 1, "unit": "px" },
+          "blur": { "value": 2, "unit": "px" },
+          "spread": { "value": -1, "unit": "px" },
+          "color": "{color.alpha.black.10}"
+        }
+      ]
+    },
+    "md": {
+      "$value": [
+        {
+          "offsetX": { "value": 0, "unit": "px" },
+          "offsetY": { "value": 4, "unit": "px" },
+          "blur": { "value": 6, "unit": "px" },
+          "spread": { "value": -1, "unit": "px" },
+          "color": "{color.alpha.black.10}"
+        },
+        {
+          "offsetX": { "value": 0, "unit": "px" },
+          "offsetY": { "value": 2, "unit": "px" },
+          "blur": { "value": 4, "unit": "px" },
+          "spread": { "value": -2, "unit": "px" },
+          "color": "{color.alpha.black.10}"
+        }
+      ]
+    },
+    "lg": {
+      "$value": [
+        {
+          "offsetX": { "value": 0, "unit": "px" },
+          "offsetY": { "value": 10, "unit": "px" },
+          "blur": { "value": 15, "unit": "px" },
+          "spread": { "value": -3, "unit": "px" },
+          "color": "{color.alpha.black.10}"
+        },
+        {
+          "offsetX": { "value": 0, "unit": "px" },
+          "offsetY": { "value": 4, "unit": "px" },
+          "blur": { "value": 6, "unit": "px" },
+          "spread": { "value": -4, "unit": "px" },
+          "color": "{color.alpha.black.10}"
+        }
+      ]
+    }
+  }
+}

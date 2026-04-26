@@ -1,0 +1,11 @@
+{
+  "radius": {
+    "$type": "dimension",
+    "none": { "$value": { "value": 0, "unit": "rem" } },
+    "sm": { "$value": { "value": 0.25, "unit": "rem" } },
+    "md": { "$value": { "value": 0.5, "unit": "rem" } },
+    "lg": { "$value": { "value": 1, "unit": "rem" } },
+    "xl": { "$value": { "value": 2, "unit": "rem" } },
+    "full": { "$value": { "value": 9999, "unit": "px" } }
+  }
+}

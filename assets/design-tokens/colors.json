@@ -1,26 +1,132 @@
 {
-  "title": "Colors",
-  "description": "Hex color codes that can be shared, cross-platform. They can be converted at point of usage, such as HSL for web or CMYK for print.",
-  "items": [
-    {
-      "name": "Dark",
-      "value": "#171406"
+  "color": {
+    "$type": "color",
+
+    "surface": {
+      "default": { "$value": "{color.cream.100}" },
+      "raised": { "$value": "{color.cream.50}" },
+      "lowered": { "$value": "{color.cream.200}" },
+      "lowest": { "$value": "{color.cream.300}" },
+      "border": { "$value": "{color.cream.300}" }
     },
-    {
-      "name": "Dark Glare",
-      "value": "#2d2816"
+
+    "text": {
+      "normal": { "$value": "{color.cream.950}" },
+      "quiet": { "$value": "{color.cream.700}" },
+      "quieter": { "$value": "{color.cream.500}" },
+      "placeholder": { "$value": "{color.cream.500}" },
+      "link": { "$value": "{color.teal.600}" }
     },
-    {
-      "name": "Mid",
-      "value": "#ABA9A2"
+
+    "fill": {
+      "quiet": { "$value": "{color.neutral.fill.quiet}" },
+      "normal": { "$value": "{color.neutral.fill.normal}" },
+      "loud": { "$value": "{color.neutral.fill.loud}" }
     },
-    {
-      "name": "Light",
-      "value": "#ffffff"
+    "on": {
+      "quiet": { "$value": "{color.neutral.on.quiet}" },
+      "normal": { "$value": "{color.neutral.on.normal}" },
+      "loud": { "$value": "{color.neutral.on.loud}" }
     },
-    {
-      "name": "Primary",
-      "value": "#fccd26"
-    }
-  ]
+    "border": {
+      "quiet": { "$value": "{color.neutral.border.quiet}" },
+      "normal": { "$value": "{color.neutral.border.normal}" },
+      "loud": { "$value": "{color.neutral.border.loud}" }
+    },
+
+    "neutral": {
+      "fill": {
+        "quiet": { "$value": "{color.cream.200}" },
+        "normal": { "$value": "{color.cream.300}" },
+        "loud": { "$value": "{color.cream.950}" }
+      },
+      "on": {
+        "quiet": { "$value": "{color.cream.950}" },
+        "normal": { "$value": "{color.cream.950}" },
+        "loud": { "$value": "{color.cream.100}" }
+      },
+      "border": {
+        "quiet": { "$value": "{color.cream.200}" },
+        "normal": { "$value": "{color.cream.300}" },
+        "loud": { "$value": "{color.cream.500}" }
+      }
+    },
+
+    "accent": {
+      "fill": {
+        "quiet": { "$value": "{color.teal.50}" },
+        "normal": { "$value": "{color.teal.100}" },
+        "loud": { "$value": "{color.teal.600}" }
+      },
+      "on": {
+        "quiet": { "$value": "{color.teal.800}" },
+        "normal": { "$value": "{color.teal.800}" },
+        "loud": { "$value": "{color.cream.100}" }
+      },
+      "border": {
+        "quiet": { "$value": "{color.teal.100}" },
+        "normal": { "$value": "{color.teal.200}" },
+        "loud": { "$value": "{color.teal.400}" }
+      }
+    },
+
+    "success": {
+      "fill": {
+        "quiet": { "$value": "{color.green.50}" },
+        "normal": { "$value": "{color.green.100}" },
+        "loud": { "$value": "{color.green.600}" }
+      },
+      "on": {
+        "quiet": { "$value": "{color.green.800}" },
+        "normal": { "$value": "{color.green.800}" },
+        "loud": { "$value": "{color.cream.100}" }
+      },
+      "border": {
+        "quiet": { "$value": "{color.green.100}" },
+        "normal": { "$value": "{color.green.200}" },
+        "loud": { "$value": "{color.green.400}" }
+      }
+    },
+
+    "warning": {
+      "fill": {
+        "quiet": { "$value": "{color.amber.50}" },
+        "normal": { "$value": "{color.amber.100}" },
+        "loud": { "$value": "{color.amber.600}" }
+      },
+      "on": {
+        "quiet": { "$value": "{color.amber.800}" },
+        "normal": { "$value": "{color.amber.800}" },
+        "loud": { "$value": "{color.cream.100}" }
+      },
+      "border": {
+        "quiet": { "$value": "{color.amber.100}" },
+        "normal": { "$value": "{color.amber.200}" },
+        "loud": { "$value": "{color.amber.300}" }
+      }
+    },
+
+    "error": {
+      "fill": {
+        "quiet": { "$value": "{color.red.50}" },
+        "normal": { "$value": "{color.red.100}" },
+        "loud": { "$value": "{color.red.600}" }
+      },
+      "on": {
+        "quiet": { "$value": "{color.red.700}" },
+        "normal": { "$value": "{color.red.700}" },
+        "loud": { "$value": "{color.cream.100}" }
+      },
+      "border": {
+        "quiet": { "$value": "{color.red.100}" },
+        "normal": { "$value": "{color.red.200}" },
+        "loud": { "$value": "{color.red.300}" }
+      }
+    },
+
+    "transparent": { "$value": "{color.alpha.black.00}" },
+    "white": { "$value": "#FFFFFF" },
+    "black": { "$value": "#000000" },
+    "overlay": { "$value": "{color.alpha.black.50}" }
+  }
 }
