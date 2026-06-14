@@ -18,7 +18,6 @@ import Config
 # script that automatically sets the env var above.
 if System.get_env("PHX_SERVER") do
   config :braidonwhatley, AppWeb.Endpoint, server: true
-  config :braidonwhatley, GolfWeb.Endpoint, server: true
 end
 
 config :braidonwhatley, AppWeb.Endpoint,
@@ -29,9 +28,6 @@ config :braidonwhatley, AppWeb.Endpoint,
 if stockfish_path = System.get_env("STOCKFISH_PATH") do
   config :braidonwhatley, App.Chess.Stockfish, path: stockfish_path
 end
-
-config :braidonwhatley, GolfWeb.Endpoint,
-  http: [port: String.to_integer(System.get_env("GOLF_PORT", "4001"))]
 
 if config_env() == :prod do
   database_url =
@@ -49,18 +45,6 @@ if config_env() == :prod do
     pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
     # For machines with several cores, consider starting multiple pools of `pool_size`
     # pool_count: 4,
-    socket_options: maybe_ipv6
-
-  golf_database_url =
-    System.get_env("GOLF_DATABASE_URL") ||
-      raise """
-      environment variable GOLF_DATABASE_URL is missing.
-      For example: ecto://USER:PASS@HOST/DATABASE
-      """
-
-  config :braidonwhatley, Golf.Repo,
-    url: golf_database_url,
-    pool_size: String.to_integer(System.get_env("GOLF_POOL_SIZE") || "10"),
     socket_options: maybe_ipv6
 
   # The secret key base is used to sign/encrypt cookies and other secrets.
@@ -86,15 +70,6 @@ if config_env() == :prod do
       # Set it to  {0, 0, 0, 0, 0, 0, 0, 1} for local network only access.
       # See the documentation on https://hexdocs.pm/bandit/Bandit.html#t:options/0
       # for details about using IPv6 vs IPv4 and loopback vs public addresses.
-      ip: {0, 0, 0, 0, 0, 0, 0, 0}
-    ],
-    secret_key_base: secret_key_base
-
-  golf_host = System.get_env("GOLF_HOST") || host
-
-  config :braidonwhatley, GolfWeb.Endpoint,
-    url: [host: golf_host, port: 443, scheme: "https"],
-    http: [
       ip: {0, 0, 0, 0, 0, 0, 0, 0}
     ],
     secret_key_base: secret_key_base
