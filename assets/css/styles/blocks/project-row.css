@@ -1,0 +1,29 @@
+.c-project-row {
+  display: grid;
+  grid-template-columns: 160px 1fr 140px 60px;
+  gap: var(--s-5);
+  align-items: baseline;
+  padding: var(--s-4) 0;
+  border-bottom: var(--bw) dotted oklch(0.7 0.02 60 / 0.5);
+}
+
+.c-project-row__name {
+  font-family: var(--f-mono);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.c-project-row__status {
+  font-family: var(--f-mono);
+  font-size: var(--fs-10);
+  color: var(--c-ink-2);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.c-project-row__tagline {
+  font-family: var(--f-serif);
+  font-size: var(--fs-15);
+}

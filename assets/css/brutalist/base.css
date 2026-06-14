@@ -1,0 +1,131 @@
+/* ===========================================================================
+   Base — reset, tokens, and base elements for the brutalist rebuild.
+   Monochrome by design: ink on warm paper, heavy rules, big mono type.
+   =========================================================================== */
+
+:root {
+  /* Palette — black & white, with a warm paper to keep it from going clinical. */
+  --paper: #f1ede2;
+  --paper-2: #e7e2d4;
+  --ink: #0c0b09;
+  --ink-2: #4a4740;
+  --line: #0c0b09;
+  --hair: rgba(12, 11, 9, 0.22);
+
+  /* Board shades (still monochrome — two warm greys). */
+  --sq-light: #e9e4d6;
+  --sq-dark: #bdb6a3;
+  --piece-light: #f6f3ea;
+
+  /* Type */
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+
+  /* Fluid type scale */
+  --step--1: clamp(0.72rem, 0.69rem + 0.15vw, 0.8rem);
+  --step-0: clamp(0.9rem, 0.86rem + 0.2vw, 1rem);
+  --step-1: clamp(1.1rem, 1rem + 0.5vw, 1.4rem);
+  --step-2: clamp(1.5rem, 1.2rem + 1.4vw, 2.4rem);
+  --step-3: clamp(2.4rem, 1.6rem + 3.6vw, 4.5rem);
+  --step-4: clamp(3.4rem, 1.8rem + 7.6vw, 8.5rem);
+
+  /* Rhythm */
+  --maxw: 64rem;
+  --gutter: clamp(1.1rem, 0.6rem + 2.4vw, 2.6rem);
+  --rule: 3px;
+  --rule-hair: 1px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: var(--step-0);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+picture,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: from-font;
+}
+
+/* Mono links in body prose get a deliberate underline. */
+.b-prose a,
+.b-list a,
+.b-facts a {
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+}
+
+.b-prose a:hover,
+.b-list a:hover,
+.b-facts a:hover {
+  background: var(--ink);
+  color: var(--paper);
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+:focus-visible {
+  outline: var(--rule) solid var(--ink);
+  outline-offset: 2px;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Visually-hidden helper, kept for accessible labels. */
+.u-vh {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+    animation-duration: 0.001ms !important;
+  }
+}

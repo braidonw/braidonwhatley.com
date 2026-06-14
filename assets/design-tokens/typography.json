@@ -1,30 +1,21 @@
 {
   "font": {
     "$type": "fontFamily",
-    "body": { "$value": "{font.base}" },
-    "heading": { "$value": "{font.hero}" },
-    "base": { "$value": ["Atkinson Hyperlegible", "system-ui", "sans-serif"] },
-    "sans": {
+    "body": { "$value": "{font.serif}" },
+    "heading": { "$value": "{font.serif}" },
+    "base": { "$value": "{font.mono}" },
+    "serif": {
       "$value": [
-        "Atkinson Hyperlegible",
-        "-apple-system",
-        "BlinkMacSystemFont",
-        "avenir next",
-        "avenir",
-        "segoe ui",
-        "helvetica neue",
-        "helvetica",
-        "Cantarell",
-        "Ubuntu",
-        "roboto",
-        "noto",
-        "arial",
-        "sans-serif"
+        "Source Serif 4",
+        "Iowan Old Style",
+        "Charter",
+        "Georgia",
+        "serif"
       ]
     },
-    "hero": { "$value": ["Poppins", "system-ui", "sans-serif"] },
     "mono": {
       "$value": [
+        "JetBrains Mono",
         "ui-monospace",
         "SFMono-Regular",
         "Menlo",
@@ -62,14 +53,17 @@
     "$type": "number",
     "micro": { "$value": 0.85 },
     "flat": { "$value": 1 },
+    "tight": { "$value": 1.15 },
     "fine": { "$value": 1.2 },
-    "standard": { "$value": 1.4 },
-    "loose": { "$value": 1.7 }
+    "snug": { "$value": 1.35 },
+    "standard": { "$value": 1.5 },
+    "loose": { "$value": 1.6 }
   },
   "tracking": {
     "$type": "dimension",
     "tight": { "$value": { "value": -0.025, "unit": "rem" } },
     "normal": { "$value": { "value": 0, "unit": "rem" } },
-    "uppercase": { "$value": { "value": 0.04, "unit": "rem" } }
+    "uppercase": { "$value": { "value": 0.04, "unit": "rem" } },
+    "loose": { "$value": { "value": 0.094, "unit": "rem" } }
   }
 }

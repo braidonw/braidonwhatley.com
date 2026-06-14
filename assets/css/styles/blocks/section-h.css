@@ -1,0 +1,27 @@
+.c-section-h {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-3);
+  margin: var(--s-6) 0 var(--s-3);
+}
+
+.c-section-h__num {
+  font-family: var(--f-mono);
+  font-size: var(--fs-10);
+  color: var(--c-accent);
+}
+
+.c-section-h__t {
+  font-family: var(--f-mono);
+  font-size: var(--fs-11);
+  font-weight: 600;
+  letter-spacing: var(--tk-loose);
+  text-transform: uppercase;
+  color: var(--c-ink-2);
+  margin: 0;
+}
+
+.c-section-h__line {
+  flex: 1;
+  border-top: var(--bw) dotted var(--c-ink-3);
+}

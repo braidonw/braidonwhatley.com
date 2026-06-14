@@ -12,8 +12,9 @@ defmodule App.Application do
       App.Repo,
       {DNSCluster, query: Application.get_env(:braidonwhatley, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: App.PubSub},
-      # Start a worker by calling: App.Worker.start_link(arg)
-      # {App.Worker, arg},
+      # Stockfish engine for the contact-gate puzzle's bot defense (degrades
+      # gracefully to the core engine if the binary is missing).
+      App.Chess.Stockfish,
       # Start to serve requests, typically the last entry
       AppWeb.Endpoint
     ]

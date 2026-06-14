@@ -24,6 +24,12 @@ end
 config :braidonwhatley, AppWeb.Endpoint,
   http: [port: String.to_integer(System.get_env("PORT", "4100"))]
 
+# Stockfish binary for the contact-gate puzzle's bot. When unset, the engine is
+# discovered on $PATH; if not found at all, the bot uses the core-engine fallback.
+if stockfish_path = System.get_env("STOCKFISH_PATH") do
+  config :braidonwhatley, App.Chess.Stockfish, path: stockfish_path
+end
+
 config :braidonwhatley, GolfWeb.Endpoint,
   http: [port: String.to_integer(System.get_env("GOLF_PORT", "4001"))]
 

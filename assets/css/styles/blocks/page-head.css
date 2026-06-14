@@ -1,0 +1,19 @@
+.c-page-head { margin: var(--s-5) 0; }
+
+.c-page-head__title {
+  font-family: var(--f-serif);
+  font-size: var(--fs-36);
+  font-weight: 400;
+  letter-spacing: var(--tk-tight);
+  line-height: var(--lh-tight);
+  margin: 0 0 6px;
+}
+
+.c-page-head__lede {
+  font-family: var(--f-serif);
+  font-size: var(--fs-15);
+  color: var(--c-ink-2);
+  margin: 0;
+  max-width: var(--measure);
+  text-wrap: pretty;
+}

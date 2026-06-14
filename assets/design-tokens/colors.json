@@ -15,7 +15,7 @@
       "quiet": { "$value": "{color.cream.700}" },
       "quieter": { "$value": "{color.cream.500}" },
       "placeholder": { "$value": "{color.cream.500}" },
-      "link": { "$value": "{color.teal.600}" }
+      "link": { "$value": "{color.ochre.600}" }
     },
 
     "fill": {
@@ -54,20 +54,26 @@
 
     "accent": {
       "fill": {
-        "quiet": { "$value": "{color.teal.50}" },
-        "normal": { "$value": "{color.teal.100}" },
-        "loud": { "$value": "{color.teal.600}" }
+        "quiet": { "$value": "{color.ochre.50}" },
+        "normal": { "$value": "{color.ochre.100}" },
+        "loud": { "$value": "{color.ochre.400}" }
       },
       "on": {
-        "quiet": { "$value": "{color.teal.800}" },
-        "normal": { "$value": "{color.teal.800}" },
+        "quiet": { "$value": "{color.ochre.800}" },
+        "normal": { "$value": "{color.ochre.800}" },
         "loud": { "$value": "{color.cream.100}" }
       },
       "border": {
-        "quiet": { "$value": "{color.teal.100}" },
-        "normal": { "$value": "{color.teal.200}" },
-        "loud": { "$value": "{color.teal.400}" }
+        "quiet": { "$value": "{color.ochre.100}" },
+        "normal": { "$value": "{color.ochre.200}" },
+        "loud": { "$value": "{color.ochre.400}" }
       }
+    },
+
+    "status": {
+      "live": { "$value": "{color.ochre.400}" },
+      "wip": { "$value": "{color.indigo.400}" },
+      "archived": { "$value": "{color.cream.500}" }
     },
 
     "success": {

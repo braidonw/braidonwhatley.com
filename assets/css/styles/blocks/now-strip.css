@@ -1,0 +1,20 @@
+.c-now-strip {
+  padding: var(--s-3) var(--s-4);
+  border: var(--bw) dashed var(--c-ink-3);
+  display: flex;
+  align-items: center;
+  gap: var(--s-4);
+  font-family: var(--f-mono);
+  font-size: var(--fs-12);
+}
+
+.c-now-strip__lbl {
+  color: var(--c-accent);
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.c-now-strip__body {
+  flex: 1;
+  color: var(--c-ink-2);
+}

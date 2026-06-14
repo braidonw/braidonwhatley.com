@@ -1,0 +1,31 @@
+.c-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.c-field__label {
+  font-family: var(--f-mono);
+  font-size: var(--fs-11);
+  color: var(--c-ink-2);
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.c-field__label[data-required]::after {
+  content: " *";
+  color: var(--c-accent);
+}
+
+.c-field__hint {
+  font-family: var(--f-mono);
+  font-size: var(--fs-10);
+  color: var(--c-ink-2);
+}
+
+.c-field__error {
+  font-family: var(--f-mono);
+  font-size: var(--fs-10);
+  color: oklch(0.55 0.18 25);
+}

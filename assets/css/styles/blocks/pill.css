@@ -1,0 +1,17 @@
+.c-pill {
+  font-family: var(--f-mono);
+  font-size: var(--fs-11);
+  padding: 3px 10px;
+  border: var(--bw) solid var(--c-ink-3);
+  background: transparent;
+  color: var(--c-ink);
+  border-radius: var(--br-pill);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.c-pill[aria-pressed="true"] {
+  background: var(--c-accent);
+  border-color: var(--c-accent);
+  color: var(--c-paper);
+}

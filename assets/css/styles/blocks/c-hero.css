@@ -1,0 +1,36 @@
+.c-hero { padding: var(--s-5) 0 var(--s-6); }
+
+.c-hero__kicker {
+  font-family: var(--f-mono);
+  font-size: var(--fs-10);
+  color: var(--c-accent);
+  letter-spacing: var(--tk-loose);
+  text-transform: uppercase;
+  margin-bottom: var(--s-3);
+}
+
+.c-hero__title {
+  font-family: var(--f-serif);
+  font-size: var(--fs-42);
+  font-weight: 400;
+  letter-spacing: var(--tk-tight);
+  line-height: var(--lh-tight);
+  margin: 0 0 var(--s-3);
+  text-wrap: balance;
+}
+
+.c-hero__lede {
+  font-family: var(--f-serif);
+  font-size: var(--fs-17);
+  line-height: var(--lh-base);
+  margin: 0 0 var(--s-5);
+  max-width: var(--measure);
+  text-wrap: pretty;
+}
+
+.c-hero__actions {
+  display: flex;
+  gap: var(--s-3);
+  flex-wrap: wrap;
+  align-items: center;
+}

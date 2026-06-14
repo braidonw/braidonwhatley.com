@@ -1,0 +1,9 @@
+.c-fact-row {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--f-mono);
+  font-size: var(--fs-11);
+  padding: 2px 0;
+}
+
+.c-fact-row__k { color: var(--c-ink-2); }

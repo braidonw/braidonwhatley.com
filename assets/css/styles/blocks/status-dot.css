@@ -1,0 +1,11 @@
+.c-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--c-ink-3);
+  display: inline-block;
+}
+
+.c-status-dot[data-status="live"]     { background: var(--c-status-live); }
+.c-status-dot[data-status="wip"]      { background: var(--c-status-wip); }
+.c-status-dot[data-status="archived"] { background: var(--c-status-archived); }

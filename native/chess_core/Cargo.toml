@@ -1,0 +1,10 @@
+[package]
+name = "chess-core"
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+description = "Bitboard chess board representation, legal move generation, and FEN/PGN parsing."
+
+[dependencies]
+
+[dev-dependencies]
