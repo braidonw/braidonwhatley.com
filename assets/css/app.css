@@ -1,40 +1,35 @@
-/* Generated Design Tokens */
-@import "./global/tokens.variables.gen.css";
+/* ─────────────────────────────────────────────────────────────────────
+   Braidon Whatley — brutalist / publishing build.
 
-/* Global Styles */
+   CUBE CSS, layered in cascade order:
+     1. Global   — fonts + design-system tokens (the single source of truth)
+     2. Base     — reset + base elements (brutalist/base.css)
+     3. Compositions / layout — page furniture (brutalist/layout.css)
+     4. Blocks   — the core component set + the contact gate & board
+   ───────────────────────────────────────────────────────────────────── */
+
+/* 1 · Global — type + design tokens (colours, typography, spacing, borders) */
 @import "./styles/global/fonts.css";
-@import "./styles/global/global.css";
+@import "./styles/global/tokens/colors.css";
+@import "./styles/global/tokens/typography.css";
+@import "./styles/global/tokens/spacing.css";
+@import "./styles/global/tokens/borders.css";
 
-/* Compositions */
-@import "./styles/compositions/cluster.css";
-@import "./styles/compositions/flow.css";
-@import "./styles/compositions/grid.css";
-@import "./styles/compositions/repel.css";
-@import "./styles/compositions/sidebar.css";
-@import "./styles/compositions/switcher.css";
-@import "./styles/compositions/wrapper.css";
+/* 2 · Base — reset + brand defaults applied to bare HTML */
+@import "./brutalist/base.css";
 
-/* Blocks */
-@import "./styles/blocks/button.css";
-@import "./styles/blocks/card.css";
-@import "./styles/blocks/closer.css";
-@import "./styles/blocks/container-fill-text.css";
-@import "./styles/blocks/corner.css";
-@import "./styles/blocks/gallery.css";
-@import "./styles/blocks/headline.css";
-@import "./styles/blocks/hero.css";
-@import "./styles/blocks/inspo.css";
-@import "./styles/blocks/labelled-icon.css";
-@import "./styles/blocks/masthead.css";
-@import "./styles/blocks/nav.css";
-@import "./styles/blocks/prose.css";
-@import "./styles/blocks/rolodex.css";
-@import "./styles/blocks/site-foot.css";
-@import "./styles/blocks/site-head.css";
-@import "./styles/blocks/skip-link.css";
+/* 3 · Layout — header, hero, numbered sections, prose, footer */
+@import "./brutalist/layout.css";
 
-/* Utilities */
-@import "./styles/utilities/field-spacing.css";
-@import "./styles/utilities/indent.css";
-@import "./styles/utilities/region.css";
-@import "./styles/utilities/visually-hidden.css";
+/* 4 · Blocks — core UI components */
+@import "./styles/blocks/c-btn.css";
+@import "./styles/blocks/c-badge.css";
+@import "./styles/blocks/c-tag.css";
+@import "./styles/blocks/c-card.css";
+@import "./styles/blocks/c-callout.css";
+@import "./styles/blocks/c-input.css";
+@import "./styles/blocks/c-field.css";
+
+/* 4 · Blocks — the contact gate + its chess board */
+@import "./styles/blocks/c-gate.css";
+@import "./styles/blocks/c-board.css";

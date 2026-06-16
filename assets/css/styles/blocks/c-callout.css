@@ -1,0 +1,34 @@
+/* BLOCK · c-callout — a sunken newsprint aside with a mono eyebrow.
+   Used for hints, notes, and asides. Accent eyebrow draws the one pointer. */
+.c-callout {
+  background: var(--surface-sunken);
+  border: var(--rule);
+  padding: var(--sp-4) var(--sp-5);
+}
+
+.c-callout--flush {
+  border: none;
+  border-top: var(--rule);
+}
+
+.c-callout--accent {
+  border-color: var(--accent);
+}
+
+.c-callout__eyebrow {
+  font-family: var(--font-mono);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--tk-label);
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: var(--sp-1);
+}
+
+.c-callout__body {
+  font-family: var(--font-sans);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-body);
+  color: var(--text-body);
+  max-width: 64ch;
+}

@@ -1,0 +1,40 @@
+/* TOKENS · COLORS — stark black & white, one accent (vermillion).
+   Brutalist: high contrast, almost no mid-tones in the core palette. */
+:root {
+  /* Base ink + paper */
+  --ink: #111111; /* near-black, primary foreground */
+  --ink-soft: #2a2a2a; /* secondary text */
+  --paper: #ffffff; /* pure white, primary surface */
+  --newsprint: #f2f0ea; /* warm off-white, secondary surface */
+
+  /* Neutral ramp (kept deliberately small) */
+  --gray-100: #ececec;
+  --gray-300: #d4d2cc;
+  --gray-500: #8c8a84;
+  --gray-700: #4a4a48;
+
+  /* Accent — the single permitted hue */
+  --accent: #ff3b00; /* vermillion / safety-red */
+  --accent-deep: #cc2f00; /* pressed / shadow variant */
+  --accent-ink: #ffffff; /* text on accent */
+
+  /* Semantic aliases — reference these in components */
+  --text-strong: var(--ink);
+  --text-body: var(--ink-soft);
+  --text-muted: var(--gray-500);
+  --text-inverse: var(--paper);
+  --text-accent: var(--accent);
+
+  --surface-page: var(--paper);
+  --surface-card: var(--paper);
+  --surface-sunken: var(--newsprint);
+  --surface-ink: var(--ink);
+  --surface-accent: var(--accent);
+
+  --line: var(--ink); /* default rule colour */
+  --line-soft: var(--gray-300);
+
+  --focus-ring: var(--accent);
+  --selection-bg: var(--accent);
+  --selection-fg: var(--accent-ink);
+}

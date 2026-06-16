@@ -1,0 +1,17 @@
+.c-toggle {
+  font-family: var(--f-mono);
+  cursor: pointer;
+  user-select: none;
+  padding: 0 4px;
+  transition: all 0.15s;
+}
+
+.c-toggle[aria-pressed="true"] {
+  background: var(--c-accent);
+  color: var(--c-paper);
+}
+
+.c-toggle[aria-pressed="false"] {
+  text-decoration: line-through;
+  text-decoration-color: var(--c-ink-3);
+}

@@ -23,6 +23,12 @@ RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
     && apt-get install -y nodejs \
     && apt-get clean && rm -f /var/lib/apt/lists/*_*
 
+# install the Rust toolchain — Rustler compiles the chess-engine NIF
+# (native/chess_nif) during `mix compile`.
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs \
+    | sh -s -- -y --default-toolchain stable --profile minimal
+ENV PATH="/root/.cargo/bin:${PATH}"
+
 # prepare build dir
 WORKDIR /app
 
@@ -54,7 +60,11 @@ COPY priv priv
 
 COPY lib lib
 
-# Compile the release
+# Rust sources for the chess NIF — must be present before `mix compile`, which
+# triggers Rustler to build native/chess_nif (and its vendored native/chess_core).
+COPY native native
+
+# Compile the release (also builds the Rust NIF)
 RUN mix compile
 
 COPY assets assets
@@ -72,8 +82,11 @@ RUN mix release
 # the compiled release and other runtime necessities
 FROM ${RUNNER_IMAGE}
 
+# `stockfish` powers the contact-gate puzzle's bot defense; libstdc++6 is needed
+# by the compiled Rust NIF. (Without stockfish the app falls back to the core
+# engine, but we ship it so the bot defends well.)
 RUN apt-get update -y && \
-    apt-get install -y libstdc++6 openssl libncurses6 locales ca-certificates \
+    apt-get install -y libstdc++6 openssl libncurses6 locales ca-certificates stockfish \
     && apt-get clean && rm -f /var/lib/apt/lists/*_*
 
 # Set the locale

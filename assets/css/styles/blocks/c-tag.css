@@ -1,0 +1,22 @@
+/* BLOCK · c-tag — the mono overline used as print furniture.
+   Frames sections like a newspaper kicker: `[ 001 ] — SELECTED WORK`. */
+.c-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-family: var(--font-mono);
+  font-weight: var(--fw-bold);
+  font-size: var(--label-size);
+  letter-spacing: var(--label-tracking);
+  text-transform: var(--label-transform);
+  line-height: 1;
+  color: var(--text-muted);
+}
+
+.c-tag--accent {
+  color: var(--accent);
+}
+
+.c-tag--strong {
+  color: var(--ink);
+}

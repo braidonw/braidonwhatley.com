@@ -1,0 +1,9 @@
+.c-footer {
+  margin-top: var(--s-7);
+  padding-top: var(--s-3);
+  border-top: var(--bw) solid var(--c-ink-3);
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--fs-10);
+  color: var(--c-ink-2);
+}

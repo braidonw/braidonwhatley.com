@@ -1,0 +1,38 @@
+.c-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-bottom: var(--s-2);
+  border-bottom: var(--bw) solid var(--c-ink-3);
+}
+
+.c-header__brand {
+  font-family: var(--f-mono);
+  font-size: var(--fs-13);
+  font-weight: 500;
+}
+
+.c-header__brand a { border-bottom: 0; }
+
+.c-header__nav {
+  display: flex;
+  gap: var(--s-5);
+  font-size: var(--fs-12);
+}
+
+.c-header__nav a {
+  border-bottom: 0;
+  opacity: 0.78;
+}
+
+.c-header__nav a:hover { opacity: 1; }
+
+.c-header__nav a[aria-current] {
+  opacity: 1;
+  color: var(--c-accent);
+}
+
+.c-header__nav a[aria-current]::before {
+  content: "▸ ";
+  font-size: var(--fs-10);
+}

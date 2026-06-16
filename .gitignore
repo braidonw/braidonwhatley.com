@@ -35,3 +35,9 @@ braidonwhatley-*.tar
 npm-debug.log
 /assets/node_modules/
 
+# Rust build artifacts for the chess NIF (native/chess_nif, native/chess_core).
+native/*/target/
+
+# The Rustler-compiled NIF is a build artifact (rebuilt by `mix compile`).
+/priv/native/
+

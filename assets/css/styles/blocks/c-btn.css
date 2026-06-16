@@ -1,0 +1,99 @@
+/* BLOCK · c-btn — the brutalist button.
+   Hard offset shadow that the element slams into on press; mono caps label.
+   Variants: neutral (outline, default) · accent (primary) · ghost.
+   Sizes:    sm · (default) · lg. */
+.c-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  font-family: var(--font-mono);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-sm);
+  letter-spacing: var(--tk-label);
+  text-transform: uppercase;
+  line-height: 1;
+  height: var(--control-h);
+  padding-inline: var(--control-pad-x);
+  border: var(--bw) solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--paper);
+  color: var(--ink);
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-hard);
+  transition: var(--transition);
+}
+
+.c-btn:hover {
+  transform: translate(var(--hover-translate), var(--hover-translate));
+  box-shadow: var(--shadow-hard-lg);
+}
+
+.c-btn:active {
+  transform: translate(var(--press-translate), var(--press-translate));
+  box-shadow: var(--shadow-none);
+}
+
+.c-btn:focus-visible {
+  outline: var(--bw-heavy) solid var(--focus-ring);
+  outline-offset: var(--bw-heavy);
+}
+
+.c-btn:disabled,
+.c-btn[aria-disabled="true"] {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: var(--shadow-hard);
+}
+
+/* ── Variants ───────────────────────────────────────────────────── */
+
+.c-btn--accent {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+}
+
+.c-btn--accent:active {
+  background: var(--accent-deep);
+  border-color: var(--accent-deep);
+}
+
+.c-btn--ghost {
+  border-color: transparent;
+  background: transparent;
+  box-shadow: var(--shadow-none);
+}
+
+.c-btn--ghost:hover {
+  transform: none;
+  box-shadow: var(--shadow-none);
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.c-btn--ghost:active {
+  transform: none;
+  box-shadow: var(--shadow-none);
+}
+
+/* ── Sizes ──────────────────────────────────────────────────────── */
+
+.c-btn--sm {
+  height: var(--control-h-sm);
+  padding-inline: var(--sp-3);
+  font-size: var(--fs-xs);
+}
+
+.c-btn--lg {
+  height: var(--control-h-lg);
+  padding-inline: var(--sp-6);
+  font-size: var(--fs-base);
+}
+
+.c-btn__kbd {
+  font-size: 0.85em;
+  opacity: 0.6;
+}

@@ -1,34 +1,75 @@
-.site-head {
+.c-site-head {
+  padding-bottom: var(--s-3);
+  border-bottom: var(--bw) solid var(--c-ink-3);
+  margin-bottom: var(--s-5);
+}
+
+.c-site-head__top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-4);
+}
+
+.c-site-head__brand {
+  font-family: var(--f-mono);
+  font-size: var(--fs-13);
+  font-weight: 500;
+}
+
+.c-site-head__brand a { border-bottom: 0; }
+
+.c-site-head__tagline {
+  font-family: var(--f-mono);
+  font-size: var(--fs-10);
+  color: var(--c-ink-2);
+  letter-spacing: var(--tk-loose);
   text-transform: uppercase;
-  letter-spacing: var(--uppercase-kerning);
-  line-height: var(--leading-flat);
-  font-size: var(--size-step-00);
-  font-weight: var(--font-bold);
-  padding-block-start: var(--space-m);
 }
 
-.site-head .repel {
-  --gutter: var(--space-m);
+.c-site-head__nav {
+  display: flex;
+  gap: var(--s-5);
+  font-size: var(--fs-12);
+  margin-top: var(--s-2);
 }
 
-.site-head__brand {
-  container-type: inline-size;
-  container-name: site-head-brand;
-  flex-basis: clamp(25ch, 60%, 50rem);
-  flex-grow: 1;
+.c-site-head__nav a {
+  border-bottom: 0;
+  opacity: 0.78;
 }
 
-.site-head__brand a:not(:hover) {
-  text-decoration: none;
+.c-site-head__nav a:hover { opacity: 1; }
+
+.c-site-head__nav a[aria-current] {
+  opacity: 1;
+  color: var(--c-accent);
 }
 
-.site-head hr {
-  --flow-space: var(--space-m);
-  --hr-stroke: var(--stroke-width) solid var(--color-primary);
+.c-site-head__nav a[aria-current]::before {
+  content: "▸ ";
+  font-size: var(--fs-10);
 }
 
-@container site-head-brand (68vi <= width <= 50rem) {
-  .site-head__brand a {
-    color: var(--color-light);
-  }
+.c-crumb {
+  font-family: var(--f-mono);
+  font-size: var(--fs-11);
+  color: var(--c-ink-2);
+  display: flex;
+  gap: var(--s-2);
+  align-items: baseline;
+  margin-bottom: var(--s-2);
 }
+
+.c-crumb a {
+  border-bottom: 0;
+  opacity: 0.8;
+}
+
+.c-crumb a:hover {
+  color: var(--c-accent);
+  opacity: 1;
+}
+
+.c-crumb__sep { opacity: 0.5; }
+.c-crumb__here { color: var(--c-ink); }

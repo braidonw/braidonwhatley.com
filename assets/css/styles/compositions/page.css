@@ -1,0 +1,66 @@
+/* l-page: outer container for the engineering-notebook layout */
+.l-page {
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding: var(--s-6) var(--page-pad) var(--s-8);
+}
+
+/* l-stack: vertical rhythm with consistent gap */
+.l-stack {
+  display: flex;
+  flex-direction: column;
+}
+
+.l-stack > * + * { margin-top: var(--stack-space, var(--s-4)); }
+.l-stack[data-space="s-2"] { --stack-space: var(--s-2); }
+.l-stack[data-space="s-3"] { --stack-space: var(--s-3); }
+.l-stack[data-space="s-5"] { --stack-space: var(--s-5); }
+.l-stack[data-space="s-6"] { --stack-space: var(--s-6); }
+
+/* l-cluster: horizontal, wraps */
+.l-cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cluster-gap, var(--s-3));
+  align-items: center;
+}
+
+/* l-sidebar: content + skinny rail */
+.l-sidebar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-7);
+}
+
+.l-sidebar > :first-child {
+  flex-grow: 1;
+  flex-basis: 0;
+  min-width: 50%;
+}
+
+.l-sidebar > :last-child {
+  flex-basis: 220px;
+  flex-grow: 1;
+}
+
+/* l-grid-3: even 3-column, collapses < 720 */
+.l-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s-6);
+}
+
+@media (max-width: 720px) {
+  .l-grid-3 { grid-template-columns: 1fr; }
+}
+
+/* l-row: split-ends row */
+.l-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-3);
+}
+
+/* l-center: text content with measure */
+.l-center { max-width: var(--measure); }

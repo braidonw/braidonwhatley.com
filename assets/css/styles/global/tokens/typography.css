@@ -1,0 +1,46 @@
+/* TOKENS · TYPOGRAPHY — a 4-voice publishing system.
+   DISPLAY  Archivo Expanded   heavy grotesque, ALL CAPS headlines
+   SANS     Archivo            workhorse body + UI
+   SERIF    Instrument Serif   editorial pull-quotes, contrast
+   MONO     Space Mono         engineer metadata, labels, code */
+:root {
+  --font-display: "Archivo Expanded", "Archivo", system-ui, sans-serif;
+  --font-sans: "Archivo", system-ui, -apple-system, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --font-mono: "Space Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Weights */
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-black: 900;
+
+  /* Type scale — brutalist, big jumps. Display-first. */
+  --fs-mega: clamp(3.5rem, 9vw, 8rem);
+  --fs-xxl: clamp(2.5rem, 6vw, 4.5rem);
+  --fs-xl: clamp(2rem, 4vw, 3rem);
+  --fs-lg: 1.5rem;
+  --fs-md: 1.125rem;
+  --fs-base: 1rem;
+  --fs-sm: 0.875rem;
+  --fs-xs: 0.75rem;
+
+  /* Line heights */
+  --lh-tight: 0.92;
+  --lh-snug: 1.1;
+  --lh-body: 1.55;
+  --lh-mono: 1.45;
+
+  /* Tracking */
+  --tk-tight: -0.03em;
+  --tk-normal: 0;
+  --tk-label: 0.14em;
+  --tk-wide: 0.2em;
+
+  /* Semantic roles */
+  --label-font: var(--font-mono);
+  --label-size: var(--fs-xs);
+  --label-tracking: var(--tk-label);
+  --label-transform: uppercase;
+}

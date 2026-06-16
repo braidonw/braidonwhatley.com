@@ -1,0 +1,15 @@
+[package]
+name = "chess_nif"
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+description = "Rustler NIF bridging Elixir to the chess-core legal-move engine."
+
+[lib]
+name = "chess_nif"
+path = "src/lib.rs"
+crate-type = ["cdylib"]
+
+[dependencies]
+rustler = "0.38"
+chess-core = { path = "../chess_core" }

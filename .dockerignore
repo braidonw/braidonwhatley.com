@@ -17,6 +17,10 @@ erl_crash.dump
 # Ignore node_modules (npm install runs in Docker)
 /assets/node_modules/
 
+# Ignore Rust build artifacts (the NIF is rebuilt in Docker)
+**/target/
+/priv/native/
+
 # Ignore dev/test configs
 /config/*.secret.exs
 /.elixir_ls/

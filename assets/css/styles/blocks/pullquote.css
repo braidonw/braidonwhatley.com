@@ -1,0 +1,9 @@
+.c-pullquote {
+  font-family: var(--f-serif);
+  font-size: var(--fs-22);
+  font-style: italic;
+  line-height: var(--lh-snug);
+  border-left: 2px solid var(--c-accent);
+  padding-left: var(--s-5);
+  margin: var(--s-6) 0;
+}

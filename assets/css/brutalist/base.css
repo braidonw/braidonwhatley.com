@@ -1,0 +1,132 @@
+/* ===========================================================================
+   Base — reset, tokens, and base elements for the brutalist rebuild.
+   Monochrome by design: ink on warm paper, heavy rules, big mono type.
+   =========================================================================== */
+
+:root {
+  /* Legacy page aliases mapped onto the design-system tokens (tokens/*.css).
+     The page surface is now pure paper on a newsprint field; one vermillion
+     accent does all the pointing. */
+  --ink-2: var(--ink-soft);
+  --hair: var(--line-soft);
+
+  /* Board shades — two warm greys, kept monochrome against the accent. */
+  --sq-light: #edeae0;
+  --sq-dark: #c9c5b8;
+  --piece-light: var(--paper);
+
+  /* Type voices (Space Mono / Instrument Serif / Archivo / Archivo Expanded). */
+  --mono: var(--font-mono);
+  --serif: var(--font-serif);
+  --sans: var(--font-sans);
+  --display: var(--font-display);
+
+  /* Fluid type scale */
+  --step--1: clamp(0.72rem, 0.69rem + 0.15vw, 0.8rem);
+  --step-0: clamp(0.9rem, 0.86rem + 0.2vw, 1rem);
+  --step-1: clamp(1.1rem, 1rem + 0.5vw, 1.4rem);
+  --step-2: clamp(1.5rem, 1.2rem + 1.4vw, 2.4rem);
+  --step-3: clamp(2.4rem, 1.6rem + 3.6vw, 4.5rem);
+  --step-4: clamp(3.4rem, 1.8rem + 7.6vw, 8.5rem);
+
+  /* Rhythm — the bordered column on newsprint. */
+  --maxw: var(--page-max);
+  --gutter: var(--page-gutter);
+  --rule: var(--bw-heavy);
+  --rule-hair: var(--bw-hair);
+  --rule-mega: var(--bw-mega);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--newsprint);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: var(--step-0);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+picture,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: from-font;
+}
+
+/* Mono links in body prose get a deliberate underline. */
+.b-prose a,
+.b-list a,
+.b-facts a {
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+}
+
+.b-prose a:hover,
+.b-list a:hover,
+.b-facts a:hover {
+  background: var(--ink);
+  color: var(--paper);
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--selection-bg);
+  color: var(--selection-fg);
+}
+
+:focus-visible {
+  outline: var(--bw-heavy) solid var(--focus-ring);
+  outline-offset: var(--bw-heavy);
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Visually-hidden helper, kept for accessible labels. */
+.u-vh {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+    animation-duration: 0.001ms !important;
+  }
+}
