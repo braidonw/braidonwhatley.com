@@ -1,0 +1,27 @@
+/* TOKENS · BORDERS & SHADOWS — the brutalist signature.
+   Hard rules, zero radius, offset hard-shadows (no blur). */
+:root {
+  --radius: 0px; /* everything is square */
+
+  --bw-hair: 1px;
+  --bw: 2px; /* default rule */
+  --bw-heavy: 3px;
+  --bw-mega: 5px; /* hero / emphasis blocks */
+
+  --rule: var(--bw) solid var(--line);
+  --rule-hair: var(--bw-hair) solid var(--line);
+  --rule-heavy: var(--bw-heavy) solid var(--line);
+  --rule-soft: var(--bw) solid var(--line-soft);
+
+  /* Hard offset shadows — no blur, pure brutalist drop */
+  --shadow-hard: 4px 4px 0 0 var(--ink);
+  --shadow-hard-lg: 8px 8px 0 0 var(--ink);
+  --shadow-accent: 6px 6px 0 0 var(--accent);
+  --shadow-none: none;
+
+  /* Interaction tokens */
+  --press-translate: 3px; /* on :active, nudge toward its shadow */
+  --hover-translate: -2px;
+  --transition: transform 80ms steps(2, end), background-color 80ms linear,
+    color 80ms linear, box-shadow 80ms steps(2, end);
+}

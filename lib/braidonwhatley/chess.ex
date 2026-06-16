@@ -52,28 +52,36 @@ defmodule App.Chess do
       fen: "6k1/5ppp/8/8/8/8/5PPP/R5K1 w - - 0 1",
       mate_in: 1,
       title: "The back rank",
-      blurb: "White to move. The king is boxed in by its own pawns. One move."
+      blurb: "White to move. The king is boxed in by its own pawns. One move.",
+      hint:
+        "It's a back-rank mate. The king built his own cell with those f-, g- and h-pawns — bring the rook all the way home down the open a-file."
     },
     %{
       id: "queen-sac-luft",
       fen: "6k1/5ppp/8/8/8/8/5PPP/3Q2K1 w - - 0 1",
       mate_in: 1,
       title: "Heavy piece, light work",
-      blurb: "White to move. Same cage, a different key. Mate in one."
+      blurb: "White to move. Same cage, a different key. Mate in one.",
+      hint:
+        "The queen does what the rook did — but she can land right on the back rank next to the king. Slide her home along the d-file and across."
     },
     %{
       id: "king-and-queen",
       fen: "6k1/8/5K2/8/8/8/8/5Q2 w - - 0 1",
       mate_in: 2,
       title: "King and queen",
-      blurb: "White to move. The bare essentials. Drive the king into the net — mate in two."
+      blurb: "White to move. The bare essentials. Drive the king into the net — mate in two.",
+      hint:
+        "Don't check yet — box him in. Use the queen a knight's-move away to take squares, let your king do the cornering, then deliver mate."
     },
     %{
       id: "battery",
       fen: "r5rk/5p1p/5R2/4Q3/8/8/7P/7K w - - 0 1",
       mate_in: 2,
       title: "The battery",
-      blurb: "White to move. Rook and queen, working together. Mate in two."
+      blurb: "White to move. Rook and queen, working together. Mate in two.",
+      hint:
+        "Rook and queen are stacked on the same line for a reason. Sacrifice the front piece to crack open the king, then the one behind it finishes."
     }
   ]
 

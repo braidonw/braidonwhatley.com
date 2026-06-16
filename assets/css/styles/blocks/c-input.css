@@ -1,0 +1,75 @@
+/* BLOCK · c-input — single-line text control with a hard focus shadow.
+   Square, heavy-bordered; on focus the rule + shadow flip to accent. */
+.c-input,
+.c-textarea {
+  width: 100%;
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  color: var(--ink);
+  background: var(--paper);
+  border: var(--bw) solid var(--ink);
+  border-radius: var(--radius);
+  padding: 0 var(--control-pad-x);
+  height: var(--control-h);
+  box-shadow: var(--shadow-hard);
+  transition: var(--transition);
+}
+
+.c-textarea {
+  height: auto;
+  padding: var(--sp-3) var(--control-pad-x);
+  line-height: var(--lh-body);
+  resize: vertical;
+}
+
+.c-input::placeholder,
+.c-textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.c-input:focus,
+.c-textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: var(--shadow-accent);
+}
+
+.c-input[aria-invalid="true"],
+.c-textarea[aria-invalid="true"] {
+  border-color: var(--accent);
+}
+
+.c-input:disabled,
+.c-textarea:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Affix group — `@` / `$` / `/` prefix sharing the input's frame. */
+.c-input-group {
+  display: flex;
+  align-items: stretch;
+  border: var(--bw) solid var(--ink);
+  background: var(--paper);
+  box-shadow: var(--shadow-hard);
+}
+
+.c-input-group:focus-within {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-accent);
+}
+
+.c-input-group__prefix {
+  display: inline-flex;
+  align-items: center;
+  padding-inline: var(--control-pad-x);
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  border-right: var(--bw) solid var(--ink);
+}
+
+.c-input-group .c-input {
+  border: none;
+  box-shadow: none;
+}

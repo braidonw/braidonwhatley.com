@@ -1,0 +1,59 @@
+/* BLOCK · c-card — heavy ink border + optional hard shadow, square corners.
+   Optional mono index/eyebrow header. The signature container. */
+.c-card {
+  background: var(--surface-card);
+  border: var(--bw-mega) solid var(--ink);
+  border-radius: var(--radius);
+}
+
+.c-card--shadow {
+  box-shadow: var(--shadow-hard-lg);
+}
+
+.c-card--accent-shadow {
+  box-shadow: var(--shadow-accent);
+}
+
+.c-card--sunken {
+  background: var(--surface-sunken);
+}
+
+/* Eyebrow header — mono index on the left, optional meta on the right. */
+.c-card__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  padding: var(--sp-4) var(--sp-5);
+  border-bottom: var(--rule);
+}
+
+.c-card__head--ink {
+  background: var(--ink);
+  color: var(--paper);
+  border-bottom: none;
+}
+
+.c-card__index {
+  font-family: var(--font-mono);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--tk-label);
+  text-transform: uppercase;
+}
+
+.c-card__body {
+  padding: var(--sp-5);
+}
+
+/* A flush, full-bleed footer rule inside the card. */
+.c-card__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  flex-wrap: wrap;
+  padding: var(--sp-4) var(--sp-5);
+  border-top: var(--rule);
+  background: var(--surface-sunken);
+}

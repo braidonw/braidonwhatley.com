@@ -4,22 +4,22 @@
    =========================================================================== */
 
 :root {
-  /* Palette — black & white, with a warm paper to keep it from going clinical. */
-  --paper: #f1ede2;
-  --paper-2: #e7e2d4;
-  --ink: #0c0b09;
-  --ink-2: #4a4740;
-  --line: #0c0b09;
-  --hair: rgba(12, 11, 9, 0.22);
+  /* Legacy page aliases mapped onto the design-system tokens (tokens/*.css).
+     The page surface is now pure paper on a newsprint field; one vermillion
+     accent does all the pointing. */
+  --ink-2: var(--ink-soft);
+  --hair: var(--line-soft);
 
-  /* Board shades (still monochrome — two warm greys). */
-  --sq-light: #e9e4d6;
-  --sq-dark: #bdb6a3;
-  --piece-light: #f6f3ea;
+  /* Board shades — two warm greys, kept monochrome against the accent. */
+  --sq-light: #edeae0;
+  --sq-dark: #c9c5b8;
+  --piece-light: var(--paper);
 
-  /* Type */
-  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
-  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  /* Type voices (Space Mono / Instrument Serif / Archivo / Archivo Expanded). */
+  --mono: var(--font-mono);
+  --serif: var(--font-serif);
+  --sans: var(--font-sans);
+  --display: var(--font-display);
 
   /* Fluid type scale */
   --step--1: clamp(0.72rem, 0.69rem + 0.15vw, 0.8rem);
@@ -29,11 +29,12 @@
   --step-3: clamp(2.4rem, 1.6rem + 3.6vw, 4.5rem);
   --step-4: clamp(3.4rem, 1.8rem + 7.6vw, 8.5rem);
 
-  /* Rhythm */
-  --maxw: 64rem;
-  --gutter: clamp(1.1rem, 0.6rem + 2.4vw, 2.6rem);
-  --rule: 3px;
-  --rule-hair: 1px;
+  /* Rhythm — the bordered column on newsprint. */
+  --maxw: var(--page-max);
+  --gutter: var(--page-gutter);
+  --rule: var(--bw-heavy);
+  --rule-hair: var(--bw-hair);
+  --rule-mega: var(--bw-mega);
 }
 
 *,
@@ -53,11 +54,11 @@ html {
 }
 
 body {
-  background: var(--paper);
+  background: var(--newsprint);
   color: var(--ink);
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: var(--step-0);
-  line-height: 1.55;
+  line-height: var(--lh-body);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -93,13 +94,13 @@ a {
 }
 
 ::selection {
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--selection-bg);
+  color: var(--selection-fg);
 }
 
 :focus-visible {
-  outline: var(--rule) solid var(--ink);
-  outline-offset: 2px;
+  outline: var(--bw-heavy) solid var(--focus-ring);
+  outline-offset: var(--bw-heavy);
 }
 
 button {

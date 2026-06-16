@@ -1,75 +1,99 @@
+/* BLOCK · c-btn — the brutalist button.
+   Hard offset shadow that the element slams into on press; mono caps label.
+   Variants: neutral (outline, default) · accent (primary) · ghost.
+   Sizes:    sm · (default) · lg. */
 .c-btn {
   display: inline-flex;
   align-items: center;
-  gap: var(--s-2);
-  font-family: var(--f-mono);
-  font-size: var(--fs-12);
-  font-weight: 500;
-  padding: 8px 16px;
-  border-radius: var(--br-2);
-  cursor: pointer;
-  transition: all 0.15s;
-  text-decoration: none;
-  border: var(--bw) solid var(--c-ink);
-  background: var(--c-ink);
-  color: var(--c-paper);
+  justify-content: center;
+  gap: var(--sp-2);
+  font-family: var(--font-mono);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-sm);
+  letter-spacing: var(--tk-label);
+  text-transform: uppercase;
   line-height: 1;
+  height: var(--control-h);
+  padding-inline: var(--control-pad-x);
+  border: var(--bw) solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--paper);
+  color: var(--ink);
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-hard);
+  transition: var(--transition);
 }
 
 .c-btn:hover {
-  background: var(--c-paper);
-  color: var(--c-ink);
-  border-bottom: var(--bw) solid var(--c-ink);
+  transform: translate(var(--hover-translate), var(--hover-translate));
+  box-shadow: var(--shadow-hard-lg);
+}
+
+.c-btn:active {
+  transform: translate(var(--press-translate), var(--press-translate));
+  box-shadow: var(--shadow-none);
 }
 
 .c-btn:focus-visible {
-  outline: 2px solid var(--c-accent);
-  outline-offset: 2px;
+  outline: var(--bw-heavy) solid var(--focus-ring);
+  outline-offset: var(--bw-heavy);
 }
 
-.c-btn:disabled {
+.c-btn:disabled,
+.c-btn[aria-disabled="true"] {
   opacity: 0.4;
   cursor: not-allowed;
+  transform: none;
+  box-shadow: var(--shadow-hard);
 }
+
+/* ── Variants ───────────────────────────────────────────────────── */
 
 .c-btn--accent {
-  background: var(--c-accent);
-  border-color: var(--c-accent);
-  color: var(--c-paper);
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
 }
 
-.c-btn--accent:hover {
-  background: var(--c-paper);
-  color: var(--c-accent);
-  border-bottom-color: var(--c-accent);
+.c-btn--accent:active {
+  background: var(--accent-deep);
+  border-color: var(--accent-deep);
 }
 
 .c-btn--ghost {
+  border-color: transparent;
   background: transparent;
-  border-color: var(--c-ink-3);
-  color: var(--c-ink);
+  box-shadow: var(--shadow-none);
 }
 
 .c-btn--ghost:hover {
-  background: var(--c-ink-fill);
-  color: var(--c-ink);
-  border-color: var(--c-ink-2);
-  border-bottom-color: var(--c-ink-2);
+  transform: none;
+  box-shadow: var(--shadow-none);
+  background: var(--ink);
+  color: var(--paper);
 }
 
+.c-btn--ghost:active {
+  transform: none;
+  box-shadow: var(--shadow-none);
+}
+
+/* ── Sizes ──────────────────────────────────────────────────────── */
+
 .c-btn--sm {
-  font-size: var(--fs-11);
-  padding: 5px 12px;
+  height: var(--control-h-sm);
+  padding-inline: var(--sp-3);
+  font-size: var(--fs-xs);
 }
 
 .c-btn--lg {
-  font-size: var(--fs-14);
-  padding: 12px 22px;
+  height: var(--control-h-lg);
+  padding-inline: var(--sp-6);
+  font-size: var(--fs-base);
 }
 
 .c-btn__kbd {
-  font-family: var(--f-mono);
   font-size: 0.85em;
-  opacity: 0.65;
-  padding-left: 4px;
+  opacity: 0.6;
 }

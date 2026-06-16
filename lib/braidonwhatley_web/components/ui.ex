@@ -1,216 +1,31 @@
 defmodule AppWeb.UI do
   @moduledoc """
-  Engineering-notebook UI components — function components that wrap the
-  CUBE blocks defined in `assets/css/styles/blocks/*.css`.
+  The core UI component set for the Braidon Whatley design system.
 
-  Naming follows the kitchen-sink reference: each `c-*` block has a
-  matching `bw_*` Phoenix component, plus a small set of layout
-  primitives (`bw_stack`, `bw_cluster`, `bw_sidebar`, `bw_grid`,
-  `bw_page`) that wrap the `l-*` compositions.
+  Each component is a thin Phoenix function wrapper over a CUBE CSS *block*
+  (`assets/css/styles/blocks/c-*.css`) that consumes the design-system tokens
+  (`assets/css/styles/global/tokens/*.css`). The block owns the look; the
+  component owns the markup contract.
+
+  Components, by block:
+
+    * `bw_btn`      → `c-btn`      — neutral / accent / ghost, sizes sm·lg
+    * `bw_badge`    → `c-badge`    — ink / accent / outline / dot status chips
+    * `bw_tag`      → `c-tag`      — the mono overline used as print furniture
+    * `bw_card`     → `c-card`     — heavy-bordered, optionally hard-shadowed
+    * `bw_callout`  → `c-callout`  — sunken newsprint aside with an accent eyebrow
+    * `bw_field`    → `c-field`    — label + control + hint/error wrapper
+    * `bw_input` / `bw_textarea` → `c-input` — hard-focus text controls
   """
   use Phoenix.Component
 
-  # ─── Compositions ─────────────────────────────────────────────────
-
-  @doc "Outer page container — the `l-page` wrapper."
-  attr :class, :string, default: nil
-  attr :rest, :global
-  slot :inner_block, required: true
-
-  def bw_page(assigns) do
-    ~H"""
-    <div class={["l-page", @class]} {@rest}>{render_slot(@inner_block)}</div>
-    """
-  end
-
-  @doc "Vertical stack with consistent gap. Override via `space=\"s-2|s-3|s-5|s-6\"`."
-  attr :space, :string, default: nil, values: [nil, "s-2", "s-3", "s-5", "s-6"]
-  attr :class, :string, default: nil
-  attr :rest, :global
-  slot :inner_block, required: true
-
-  def bw_stack(assigns) do
-    ~H"""
-    <div class={["l-stack", @class]} data-space={@space} {@rest}>
-      {render_slot(@inner_block)}
-    </div>
-    """
-  end
-
-  @doc "Horizontal wrapping cluster — tag rows, button groups, breadcrumbs."
-  attr :class, :string, default: nil
-  attr :rest, :global
-  slot :inner_block, required: true
-
-  def bw_cluster(assigns) do
-    ~H"""
-    <div class={["l-cluster", @class]} {@rest}>{render_slot(@inner_block)}</div>
-    """
-  end
-
-  @doc "Sidebar layout — main content + skinny 220px rail."
-  slot :main, required: true
-  slot :rail, required: true
-  attr :class, :string, default: nil
-
-  def bw_sidebar(assigns) do
-    ~H"""
-    <div class={["l-sidebar", @class]}>
-      <div>{render_slot(@main)}</div>
-      <div>{render_slot(@rail)}</div>
-    </div>
-    """
-  end
-
-  @doc "Equal-column grid. Currently only 3-column; collapses to one column under 720px."
-  attr :cols, :integer, default: 3, values: [3]
-  attr :class, :string, default: nil
-  slot :col, required: true
-
-  def bw_grid(assigns) do
-    ~H"""
-    <div class={["l-grid-#{@cols}", @class]}>
-      <div :for={col <- @col}>{render_slot(col)}</div>
-    </div>
-    """
-  end
-
-  # ─── Chrome ───────────────────────────────────────────────────────
-
-  @doc "Top-of-page header. Brand on the left, nav on the right."
-  attr :active, :atom, default: nil
-  attr :brand, :string, default: "braidon whatley"
-  attr :class, :string, default: nil
-
-  slot :item, required: true do
-    attr :id, :atom, required: true
-    attr :href, :string, required: true
-  end
-
-  def bw_header(assigns) do
-    ~H"""
-    <header class={["c-header", @class]}>
-      <div class="c-header__brand">
-        <a href="/">{@brand}<span class="u-blink"></span></a>
-      </div>
-      <nav class="c-header__nav">
-        <a
-          :for={item <- @item}
-          href={item.href}
-          aria-current={if item.id == @active, do: "page"}
-        >{render_slot(item)}</a>
-      </nav>
-    </header>
-    """
-  end
-
-  @doc "Extended top bar with a tagline and a stacked nav row."
-  attr :active, :atom, default: nil
-  attr :brand, :string, default: "braidon whatley"
-  attr :tagline, :string, default: nil
-  attr :class, :string, default: nil
-
-  slot :item, required: true do
-    attr :id, :atom, required: true
-    attr :href, :string, required: true
-  end
-
-  def bw_site_head(assigns) do
-    ~H"""
-    <header class={["c-site-head", @class]}>
-      <div class="c-site-head__top">
-        <div class="c-site-head__brand">
-          <a href="/">{@brand}<span class="u-blink"></span></a>
-        </div>
-        <div :if={@tagline} class="c-site-head__tagline">{@tagline}</div>
-      </div>
-      <nav class="c-site-head__nav">
-        <a
-          :for={item <- @item}
-          href={item.href}
-          aria-current={if item.id == @active, do: "page"}
-        >{render_slot(item)}</a>
-      </nav>
-    </header>
-    """
-  end
-
-  @doc "Slash-separated breadcrumb. Last item is plain text via the `here` slot."
-  slot :step do
-    attr :href, :string, required: true
-  end
-
-  slot :here, required: true
-
-  def bw_crumb(assigns) do
-    ~H"""
-    <nav class="c-crumb">
-      <span :for={step <- @step}>
-        <a href={step.href}>{render_slot(step)}</a>
-        <span class="c-crumb__sep">/</span>
-      </span>
-      <span class="c-crumb__here">{render_slot(@here)}</span>
-    </nav>
-    """
-  end
-
-  @doc "Page header — serif h1 + dim lede. Used on writing/projects/tools."
-  attr :title, :string, required: true
-  attr :class, :string, default: nil
-  slot :inner_block
-
-  def bw_page_head(assigns) do
-    ~H"""
-    <div class={["c-page-head", @class]}>
-      <h1 class="c-page-head__title">{@title}</h1>
-      <p :if={@inner_block != []} class="c-page-head__lede">
-        {render_slot(@inner_block)}
-      </p>
-    </div>
-    """
-  end
-
-  @doc "Larger sibling of `bw_page_head`. Optional kicker, lede, and actions row."
-  attr :kicker, :string, default: nil
-  attr :class, :string, default: nil
-
-  slot :title, required: true
-  slot :lede
-  slot :actions
-
-  def bw_hero(assigns) do
-    ~H"""
-    <section class={["c-hero", @class]}>
-      <div :if={@kicker} class="c-hero__kicker">{@kicker}</div>
-      <h1 class="c-hero__title">{render_slot(@title)}</h1>
-      <p :if={@lede != []} class="c-hero__lede">{render_slot(@lede)}</p>
-      <div :if={@actions != []} class="c-hero__actions">{render_slot(@actions)}</div>
-    </section>
-    """
-  end
-
-  @doc "Site footer — contact line, page number, optional local clock."
-  attr :page, :integer, default: 1
-  attr :clock, :string, default: nil
-  attr :contact, :string, default: "hello@braidonwhatley.com · @bw on most things"
-
-  def bw_footer(assigns) do
-    ~H"""
-    <footer class="c-footer">
-      <span>↳ {@contact}</span>
-      <span>
-        notebook iv · pp. {String.pad_leading(Integer.to_string(@page), 3, "0")}<%= if @clock do %> · {@clock}<% end %>
-      </span>
-    </footer>
-    """
-  end
-
-  # ─── Blocks ───────────────────────────────────────────────────────
+  # ─── Button ───────────────────────────────────────────────────────
 
   @doc """
-  Three button variants × three sizes. Optional `kbd` for keyboard hints.
+  Button with three variants × three sizes.
 
   Renders a `<button>` by default; pass `href` to render an `<a>` instead.
+  `kbd` appends a dimmed keyboard hint.
   """
   attr :variant, :string, default: "neutral", values: ~w(neutral accent ghost)
   attr :size, :string, default: nil, values: [nil, "sm", "lg"]
@@ -218,7 +33,9 @@ defmodule AppWeb.UI do
   attr :kbd, :string, default: nil
   attr :href, :string, default: nil
   attr :class, :string, default: nil
-  attr :rest, :global, include: ~w(disabled phx-click phx-value-tag form name value)
+
+  attr :rest, :global,
+    include: ~w(disabled target rel name value form phx-click phx-value-tag phx-disable-with)
 
   slot :inner_block, required: true
 
@@ -241,198 +58,113 @@ defmodule AppWeb.UI do
     """
   end
 
-  @doc "Numbered eyebrow heading with a trailing dotted rule."
-  attr :num, :string, default: nil
+  # ─── Badge ────────────────────────────────────────────────────────
+
+  @doc "Small mono status chip. Variants: ink (default) · accent · outline · dot."
+  attr :variant, :string, default: "ink", values: ~w(ink accent outline dot)
   attr :class, :string, default: nil
+  attr :rest, :global
   slot :inner_block, required: true
 
-  def bw_section_h(assigns) do
+  def bw_badge(assigns) do
     ~H"""
-    <div class={["c-section-h", @class]}>
-      <span :if={@num} class="c-section-h__num">§{@num}</span>
-      <h2 class="c-section-h__t">{render_slot(@inner_block)}</h2>
-      <span class="c-section-h__line"></span>
-    </div>
+    <span
+      class={["c-badge", @variant != "ink" && "c-badge--#{@variant}", @class]}
+      {@rest}
+    >
+      {render_slot(@inner_block)}
+    </span>
     """
   end
 
-  @doc "Vertical list of links — used three times on the home page."
+  # ─── Tag (overline) ───────────────────────────────────────────────
+
+  @doc "Mono overline / kicker — print furniture. Variants: muted (default) · strong · accent."
+  attr :variant, :string, default: "muted", values: ~w(muted strong accent)
   attr :class, :string, default: nil
+  attr :rest, :global
+  slot :inner_block, required: true
 
-  slot :row, required: true do
-    attr :href, :string, required: true
-    attr :meta, :string
-  end
-
-  def bw_linklist(assigns) do
+  def bw_tag(assigns) do
     ~H"""
-    <ul class={["c-linklist", @class]}>
-      <li :for={row <- @row} class="c-linklist__item">
-        <a href={row.href}>{render_slot(row)}</a>
-        <span :if={row[:meta]} class="c-linklist__meta">{row.meta}</span>
-      </li>
-    </ul>
+    <span
+      class={["c-tag", @variant != "muted" && "c-tag--#{@variant}", @class]}
+      {@rest}
+    >
+      {render_slot(@inner_block)}
+    </span>
     """
   end
+
+  # ─── Card ─────────────────────────────────────────────────────────
 
   @doc """
-  Single row in the writing index. Date / title+blurb / words+tag.
-
-  `words` accepts an integer or a pre-formatted string ("1,840").
+  Heavy-bordered container. Optional `shadow` (`hard` | `accent`) and a
+  `head`/`foot` slot for the mono eyebrow and flush footer rule.
   """
-  attr :date, :string, required: true
-  attr :title, :string, required: true
-  attr :blurb, :string, default: nil
-  attr :words, :any, default: nil
-  attr :tag, :string, default: nil
-  attr :href, :string, required: true
-
-  def bw_post_row(assigns) do
-    ~H"""
-    <a href={@href} class="c-post-row" style="text-decoration: none; color: inherit; border: 0;">
-      <span class="c-post-row__date">{@date}</span>
-      <div>
-        <div class="c-post-row__title">{@title}</div>
-        <div :if={@blurb} class="c-post-row__blurb">{@blurb}</div>
-      </div>
-      <span class="c-post-row__rt">
-        <span :if={@words}>{@words} w</span>
-        <br :if={@words && @tag} />
-        <span :if={@tag} class="u-accent">#{@tag}</span>
-      </span>
-    </a>
-    """
-  end
-
-  @doc "Single row in the projects index. Name+status / tagline / stack / metric."
-  attr :name, :string, required: true
-  attr :status, :atom, default: :live, values: ~w(live wip archived)a
-  attr :status_label, :string, default: nil
-  attr :tagline, :string, default: nil
-  attr :stack, :string, default: nil
-  attr :metric, :string, default: nil
-  attr :href, :string, required: true
-
-  def bw_project_row(assigns) do
-    assigns =
-      assign_new(assigns, :status_label, fn ->
-        case assigns.status do
-          :live -> "live"
-          :wip -> "wip"
-          :archived -> "archived"
-        end
-      end)
-
-    ~H"""
-    <a href={@href} class="c-project-row" style="text-decoration: none; color: inherit; border: 0;">
-      <div>
-        <div class="c-project-row__name">{@name}</div>
-        <div class="c-project-row__status">
-          <.bw_status_dot status={@status} />{@status_label}
-        </div>
-      </div>
-      <div :if={@tagline} class="c-project-row__tagline">{@tagline}</div>
-      <div :if={@stack} class="u-meta" style="text-align: right;">{@stack}</div>
-      <div :if={@metric} class="u-meta" style="text-align: right;">{@metric}</div>
-    </a>
-    """
-  end
-
-  @doc "Coloured 8px dot for project status."
-  attr :status, :atom, required: true, values: ~w(live wip archived)a
-
-  def bw_status_dot(assigns) do
-    ~H"""
-    <span class="c-status-dot" data-status={@status}></span>
-    """
-  end
-
-  @doc "Pill button for filters and segmented choices. `pressed` is the source of truth."
-  attr :pressed, :boolean, default: false
+  attr :shadow, :string, default: nil, values: [nil, "hard", "accent"]
+  attr :sunken, :boolean, default: false
   attr :class, :string, default: nil
-  attr :rest, :global, include: ~w(phx-click phx-value-tag disabled type)
+  attr :rest, :global
+
+  slot :head do
+    attr :ink, :boolean
+  end
+
+  slot :foot
   slot :inner_block, required: true
 
-  def bw_pill(assigns) do
+  def bw_card(assigns) do
     ~H"""
-    <button
-      type="button"
-      class={["c-pill", @class]}
-      aria-pressed={to_string(@pressed)}
+    <div
+      class={[
+        "c-card",
+        @shadow == "hard" && "c-card--shadow",
+        @shadow == "accent" && "c-card--accent-shadow",
+        @sunken && "c-card--sunken",
+        @class
+      ]}
       {@rest}
-    >{render_slot(@inner_block)}</button>
-    """
-  end
-
-  @doc "\"NOW\" strip — what I'm doing right now, dashed border."
-  attr :label, :string, default: "NOW"
-  slot :inner_block, required: true
-  slot :more
-
-  def bw_now_strip(assigns) do
-    ~H"""
-    <div class="c-now-strip">
-      <span class="c-now-strip__lbl">{@label}</span>
-      <span class="c-now-strip__body">{render_slot(@inner_block)}</span>
-      <span :if={@more != []} class="u-meta">{render_slot(@more)}</span>
-    </div>
-    """
-  end
-
-  @doc "Key/value fact rows — about-page side rail."
-  attr :class, :string, default: nil
-
-  slot :row, required: true do
-    attr :k, :string, required: true
-  end
-
-  def bw_facts(assigns) do
-    ~H"""
-    <div class={["l-stack", @class]} style="border-top: 1px solid var(--c-ink-3); border-bottom: 1px solid var(--c-ink-3); padding: 12px 0;">
-      <div :for={row <- @row} class="c-fact-row">
-        <span class="c-fact-row__k">{row.k}</span>
-        <span>{render_slot(row)}</span>
+    >
+      <div :for={head <- @head} class={["c-card__head", head[:ink] && "c-card__head--ink"]}>
+        {render_slot(head)}
       </div>
+      <div class="c-card__body">{render_slot(@inner_block)}</div>
+      <div :for={foot <- @foot} class="c-card__foot">{render_slot(foot)}</div>
     </div>
     """
   end
 
-  @doc "Italic serif pull-quote with an accent bar on the left."
+  # ─── Callout ──────────────────────────────────────────────────────
+
+  @doc "Sunken newsprint aside with an accent mono eyebrow. Used for hints and notes."
+  attr :eyebrow, :string, default: nil
+  attr :flush, :boolean, default: false, doc: "drop the box border, keep only a top rule"
+  attr :accent, :boolean, default: false
+  attr :class, :string, default: nil
+  attr :rest, :global
   slot :inner_block, required: true
 
-  def bw_pullquote(assigns) do
+  def bw_callout(assigns) do
     ~H"""
-    <blockquote class="c-pullquote">{render_slot(@inner_block)}</blockquote>
-    """
-  end
-
-  @doc "Inline interactive counter — pairs with a LiveView phx-click event."
-  attr :id, :string, required: true
-  attr :count, :integer, required: true
-  attr :rest, :global, include: ~w(phx-click phx-value-tag)
-
-  def bw_counter(assigns) do
-    ~H"""
-    <button id={@id} type="button" class="c-counter" {@rest}>{@count}</button>
-    """
-  end
-
-  @doc "Inline toggle — strikethrough when off, accent when on."
-  attr :pressed, :boolean, default: false
-  attr :rest, :global, include: ~w(phx-click phx-value-tag)
-  slot :inner_block, required: true
-
-  def bw_toggle(assigns) do
-    ~H"""
-    <button type="button" class="c-toggle" aria-pressed={to_string(@pressed)} {@rest}>
-      {render_slot(@inner_block)}
-    </button>
+    <div
+      class={[
+        "c-callout",
+        @flush && "c-callout--flush",
+        @accent && "c-callout--accent",
+        @class
+      ]}
+      {@rest}
+    >
+      <div :if={@eyebrow} class="c-callout__eyebrow">{@eyebrow}</div>
+      <div class="c-callout__body">{render_slot(@inner_block)}</div>
+    </div>
     """
   end
 
   # ─── Forms ────────────────────────────────────────────────────────
 
-  @doc "Field wrapper — label, hint, error text. Use with `bw_input`/`bw_textarea`/`bw_select`."
+  @doc "Field wrapper — label, control, hint, error. Use with `bw_input`/`bw_textarea`."
   attr :label, :string, required: true
   attr :for, :string, default: nil
   attr :required, :boolean, default: false
@@ -463,27 +195,17 @@ defmodule AppWeb.UI do
   attr :prefix, :string, default: nil
   attr :invalid, :boolean, default: false
   attr :field, Phoenix.HTML.FormField, default: nil
-  attr :rest, :global, include: ~w(autocomplete autofocus disabled minlength maxlength pattern readonly required)
+
+  attr :rest, :global,
+    include:
+      ~w(autocomplete autofocus disabled minlength maxlength pattern readonly required inputmode)
 
   def bw_input(assigns) do
     assigns = field_to_attrs(assigns)
 
     ~H"""
-    <%= if @prefix do %>
-      <div class="c-input-group">
-        <span class="c-input-group__prefix">{@prefix}</span>
-        <input
-          class="c-input"
-          type={@type}
-          name={@name}
-          id={@id}
-          value={@value}
-          placeholder={@placeholder}
-          aria-invalid={if @invalid, do: "true"}
-          {@rest}
-        />
-      </div>
-    <% else %>
+    <div :if={@prefix} class="c-input-group">
+      <span class="c-input-group__prefix">{@prefix}</span>
       <input
         class="c-input"
         type={@type}
@@ -491,10 +213,21 @@ defmodule AppWeb.UI do
         id={@id}
         value={@value}
         placeholder={@placeholder}
-        aria-invalid={if @invalid, do: "true"}
+        aria-invalid={@invalid && "true"}
         {@rest}
       />
-    <% end %>
+    </div>
+    <input
+      :if={!@prefix}
+      class="c-input"
+      type={@type}
+      name={@name}
+      id={@id}
+      value={@value}
+      placeholder={@placeholder}
+      aria-invalid={@invalid && "true"}
+      {@rest}
+    />
     """
   end
 
@@ -518,66 +251,9 @@ defmodule AppWeb.UI do
       id={@id}
       placeholder={@placeholder}
       rows={@rows}
-      aria-invalid={if @invalid, do: "true"}
+      aria-invalid={@invalid && "true"}
       {@rest}
     >{@value}</textarea>
-    """
-  end
-
-  @doc "Native select wrapped in CUBE chrome. `options` is `[{label, value}]` or just `[value]`."
-  attr :name, :string, default: nil
-  attr :id, :string, default: nil
-  attr :value, :string, default: nil
-  attr :options, :list, default: []
-  attr :field, Phoenix.HTML.FormField, default: nil
-  attr :rest, :global, include: ~w(disabled required)
-
-  def bw_select(assigns) do
-    assigns = field_to_attrs(assigns)
-
-    ~H"""
-    <select class="c-select" name={@name} id={@id} {@rest}>
-      <option :for={opt <- @options} value={option_value(opt)} selected={option_value(opt) == @value}>
-        {option_label(opt)}
-      </option>
-    </select>
-    """
-  end
-
-  @doc "Custom checkbox — invisible native input + accessible focus ring."
-  attr :name, :string, default: nil
-  attr :id, :string, default: nil
-  attr :value, :string, default: "true"
-  attr :checked, :boolean, default: false
-  attr :field, Phoenix.HTML.FormField, default: nil
-  slot :inner_block, required: true
-
-  def bw_check(assigns) do
-    assigns = field_to_attrs(assigns)
-
-    ~H"""
-    <label class="c-check">
-      <input type="checkbox" name={@name} id={@id} value={@value} checked={@checked} />
-      <span class="c-check__box"></span>
-      {render_slot(@inner_block)}
-    </label>
-    """
-  end
-
-  @doc "Custom radio button — same chrome as `bw_check` with a round indicator."
-  attr :name, :string, required: true
-  attr :id, :string, default: nil
-  attr :value, :string, required: true
-  attr :checked, :boolean, default: false
-  slot :inner_block, required: true
-
-  def bw_radio(assigns) do
-    ~H"""
-    <label class="c-check c-check--radio">
-      <input type="radio" name={@name} id={@id} value={@value} checked={@checked} />
-      <span class="c-check__box"></span>
-      {render_slot(@inner_block)}
-    </label>
     """
   end
 
@@ -592,10 +268,4 @@ defmodule AppWeb.UI do
   end
 
   defp field_to_attrs(assigns), do: assigns
-
-  defp option_value({_label, value}), do: value
-  defp option_value(value), do: value
-
-  defp option_label({label, _value}), do: label
-  defp option_label(value), do: value
 end

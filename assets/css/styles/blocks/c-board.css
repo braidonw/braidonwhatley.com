@@ -79,13 +79,14 @@
   box-shadow: inset 0 0 0 3px var(--ink);
 }
 
+/* The one accent on the board: the picked-up piece is ringed in vermillion. */
 .c-board__sq.is-selected {
-  box-shadow: inset 0 0 0 4px var(--ink);
+  box-shadow: inset 0 0 0 4px var(--accent);
 }
 
 /* Capture target: a ring around the enemy piece instead of a dot. */
 .c-board__sq.is-target.has-piece {
-  box-shadow: inset 0 0 0 4px rgba(12, 11, 9, 0.6);
+  box-shadow: inset 0 0 0 4px var(--accent);
 }
 
 /* ─── Pieces ─────────────────────────────────────────────────────── */

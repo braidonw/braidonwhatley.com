@@ -1,43 +1,55 @@
 /* ===========================================================================
    Layout — page furniture: header, hero, numbered sections, prose, footer.
+   The page is a bordered paper column on a newsprint field — an exposed frame.
    =========================================================================== */
 
 .b-page {
   max-width: var(--maxw);
+  min-height: 100vh;
   margin-inline: auto;
   padding-inline: var(--gutter);
+  background: var(--paper);
+  border-inline: var(--rule-mega) solid var(--ink);
+}
+
+/* The single accent: the dot after a headline or brand. */
+.b-accent {
+  color: var(--accent);
 }
 
 /* ─── Header ─────────────────────────────────────────────────────── */
 
 .b-head {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding-block: 1.4rem;
-  border-bottom: var(--rule) solid var(--line);
+  padding-block: 1rem;
+  border-bottom: var(--rule-mega) solid var(--line);
   position: sticky;
   top: 0;
   background: var(--paper);
-  z-index: 10;
+  z-index: 20;
 }
 
 .b-head__brand {
-  font-family: var(--mono);
-  font-weight: 800;
+  font-family: var(--display);
+  font-weight: var(--fw-black);
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  font-size: var(--step-0);
+  letter-spacing: var(--tk-tight);
+  font-size: var(--step-1);
 }
 
 .b-head__nav {
   display: flex;
-  gap: clamp(0.8rem, 2vw, 1.8rem);
+  gap: clamp(0.8rem, 2vw, 1.4rem);
   font-family: var(--mono);
+  font-weight: var(--fw-bold);
   font-size: var(--step--1);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: var(--tk-label);
+  color: var(--text-muted);
+  margin-inline-start: auto;
 }
 
 .b-head__nav a {
@@ -45,56 +57,82 @@
   border-bottom: 2px solid transparent;
 }
 
-.b-head__nav a:hover {
-  border-color: var(--ink);
+.b-head__nav a:hover,
+.b-head__nav a[aria-current="page"] {
+  color: var(--ink);
+  border-color: var(--accent);
+}
+
+/* "Available" status — a small accent square + mono label. */
+.b-head__status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-family: var(--mono);
+  font-weight: var(--fw-bold);
+  font-size: var(--step--1);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.b-head__status::before {
+  content: "";
+  width: var(--sp-2);
+  height: var(--sp-2);
+  background: var(--accent);
+  display: inline-block;
 }
 
 /* ─── Hero ───────────────────────────────────────────────────────── */
 
 .b-hero {
   padding-block: clamp(2.4rem, 1rem + 6vw, 6rem) clamp(2rem, 1rem + 4vw, 4rem);
-  border-bottom: var(--rule) solid var(--line);
+  border-bottom: var(--rule-mega) solid var(--line);
 }
 
 .b-hero__kicker {
   font-family: var(--mono);
+  font-weight: var(--fw-bold);
   font-size: var(--step--1);
   text-transform: uppercase;
-  letter-spacing: 0.22em;
-  color: var(--ink-2);
+  letter-spacing: var(--tk-wide);
+  color: var(--text-muted);
   margin-bottom: clamp(1rem, 3vw, 2rem);
 }
 
 .b-hero__name {
-  font-family: var(--mono);
-  font-weight: 800;
+  font-family: var(--display);
+  font-weight: var(--fw-black);
   font-size: var(--step-4);
-  line-height: 0.88;
-  letter-spacing: -0.02em;
+  line-height: 0.84;
+  letter-spacing: -0.035em;
   text-transform: uppercase;
 }
 
 .b-hero__role {
   margin-top: clamp(1.2rem, 3vw, 2.2rem);
-  max-width: 42ch;
-  font-size: var(--step-1);
-  line-height: 1.4;
+  max-width: 26ch;
+  font-family: var(--serif);
+  font-size: var(--step-2);
+  line-height: 1.32;
 }
 
 /* ─── Sections ───────────────────────────────────────────────────── */
 
 .b-section {
   padding-block: clamp(2.2rem, 1rem + 4vw, 4rem);
-  border-bottom: var(--rule) solid var(--line);
+  border-bottom: var(--rule-mega) solid var(--line);
 }
 
 .b-section__h {
   display: flex;
-  align-items: baseline;
-  gap: 0.7em;
+  align-items: center;
+  gap: 0.6em;
   flex-wrap: wrap;
   font-family: var(--mono);
-  font-weight: 700;
+  font-weight: var(--fw-bold);
   font-size: var(--step-2);
   text-transform: lowercase;
   letter-spacing: -0.01em;
@@ -103,21 +141,36 @@
 
 .b-section__num {
   font-size: 0.62em;
-  font-weight: 800;
+  font-weight: var(--fw-bold);
+  font-family: var(--mono);
   color: var(--paper);
   background: var(--ink);
-  padding: 0.1em 0.45em;
+  padding: 0.2em 0.55em;
   letter-spacing: 0.05em;
 }
 
 /* ─── Prose ──────────────────────────────────────────────────────── */
 
 .b-prose {
-  max-width: 60ch;
+  max-width: 62ch;
   display: grid;
-  gap: 1rem;
-  font-size: var(--step-1);
-  line-height: 1.5;
+  gap: 1.2rem;
+  font-family: var(--serif);
+  font-size: var(--step-2);
+  line-height: 1.4;
+}
+
+.b-prose a {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 3px;
+}
+
+.b-prose a:hover {
+  background: var(--ink);
+  color: var(--paper);
+  text-decoration: none;
 }
 
 /* ─── Facts (key/value rows) ─────────────────────────────────────── */
@@ -127,28 +180,31 @@
   padding: 0;
   display: grid;
   gap: 0;
-  border-top: var(--rule-hair) solid var(--hair);
+  border-top: var(--rule) solid var(--line);
 }
 
 .b-facts > li {
   display: grid;
   grid-template-columns: minmax(7rem, 12rem) 1fr;
   gap: 1rem clamp(1rem, 4vw, 3rem);
-  padding-block: 1.1rem;
+  padding-block: 1.25rem;
   border-bottom: var(--rule-hair) solid var(--hair);
 }
 
 .b-facts__k {
   font-family: var(--mono);
+  font-weight: var(--fw-bold);
   font-size: var(--step--1);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--ink-2);
+  letter-spacing: var(--tk-label);
+  color: var(--text-muted);
   padding-top: 0.2em;
 }
 
 .b-facts__v {
   max-width: 52ch;
+  font-family: var(--sans);
+  line-height: 1.5;
 }
 
 /* ─── Highlight list ─────────────────────────────────────────────── */
@@ -157,24 +213,28 @@
   list-style: none;
   padding: 0;
   display: grid;
-  gap: 1.1rem;
+  gap: 0;
   max-width: 64ch;
+  border-top: var(--rule) solid var(--line);
 }
 
 .b-list > li {
   position: relative;
-  padding-left: 2.2rem;
-  font-size: var(--step-1);
-  line-height: 1.45;
+  padding: 1.1rem 0 1.1rem 2.2rem;
+  font-family: var(--serif);
+  font-size: var(--step-2);
+  line-height: 1.35;
+  border-bottom: var(--rule-hair) solid var(--hair);
 }
 
 .b-list > li::before {
   content: "→";
   position: absolute;
   left: 0;
-  top: 0;
-  font-family: var(--mono);
-  font-weight: 700;
+  top: 1.1rem;
+  font-family: var(--display);
+  font-weight: var(--fw-black);
+  color: var(--accent);
 }
 
 /* ─── Footer ─────────────────────────────────────────────────────── */
@@ -183,17 +243,27 @@
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 0.75rem 1.5rem;
   flex-wrap: wrap;
-  padding-block: 2rem 3rem;
+  padding-block: 1.4rem 1.6rem;
   font-family: var(--mono);
+  font-weight: var(--fw-bold);
   font-size: var(--step--1);
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--ink-2);
+  letter-spacing: var(--tk-label);
+  color: var(--text-muted);
+}
+
+.b-foot i {
+  font-family: var(--serif);
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 1.15em;
+  color: var(--ink);
 }
 
 .b-foot__mark {
-  font-weight: 800;
+  font-weight: var(--fw-bold);
   color: var(--ink);
 }

@@ -1,0 +1,44 @@
+/* BLOCK · c-badge — small mono status chip / index marker.
+   Variants: ink (default, filled) · accent · outline · dot (leading square). */
+.c-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-family: var(--font-mono);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--tk-label);
+  text-transform: uppercase;
+  line-height: 1;
+  padding: var(--sp-1) var(--sp-2);
+  border-radius: var(--radius);
+  background: var(--ink);
+  color: var(--paper);
+  white-space: nowrap;
+}
+
+.c-badge--accent {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.c-badge--outline {
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: inset 0 0 0 var(--bw) var(--ink);
+}
+
+/* Status dot — a small accent square leading a label set in ink. */
+.c-badge--dot {
+  background: transparent;
+  color: var(--ink);
+  padding-inline: 0;
+}
+
+.c-badge--dot::before {
+  content: "";
+  width: var(--sp-2);
+  height: var(--sp-2);
+  background: var(--accent);
+  display: inline-block;
+}

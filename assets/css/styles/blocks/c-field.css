@@ -1,0 +1,34 @@
+/* BLOCK · c-field — label + control + hint/error wrapper.
+   Mono uppercase label, sentence-case hint, accent error. */
+.c-field {
+  display: grid;
+  gap: var(--sp-2);
+}
+
+.c-field__label {
+  font-family: var(--font-mono);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--tk-label);
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.c-field__label[data-required]::after {
+  content: " ✺";
+  color: var(--accent);
+}
+
+.c-field__hint {
+  font-family: var(--font-sans);
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+}
+
+.c-field__error {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--tk-label);
+  text-transform: uppercase;
+  color: var(--accent);
+}

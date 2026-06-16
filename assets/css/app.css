@@ -1,21 +1,35 @@
 /* ─────────────────────────────────────────────────────────────────────
-   Brutalist / print rebuild.
+   Braidon Whatley — brutalist / publishing build.
 
-   A clean slate: the engineering-notebook design tokens and legacy blocks are
-   intentionally NOT imported. Everything the home page needs is the small set
-   below. (The old block stylesheets still live under styles/blocks for
-   reference, but nothing here pulls them in.)
+   CUBE CSS, layered in cascade order:
+     1. Global   — fonts + design-system tokens (the single source of truth)
+     2. Base     — reset + base elements (brutalist/base.css)
+     3. Compositions / layout — page furniture (brutalist/layout.css)
+     4. Blocks   — the core component set + the contact gate & board
    ───────────────────────────────────────────────────────────────────── */
 
-/* Type */
+/* 1 · Global — type + design tokens (colours, typography, spacing, borders) */
 @import "./styles/global/fonts.css";
+@import "./styles/global/tokens/colors.css";
+@import "./styles/global/tokens/typography.css";
+@import "./styles/global/tokens/spacing.css";
+@import "./styles/global/tokens/borders.css";
 
-/* Foundations: reset, tokens (custom properties), base elements */
+/* 2 · Base — reset + brand defaults applied to bare HTML */
 @import "./brutalist/base.css";
 
-/* Page furniture: header, hero, sections, prose, footer */
+/* 3 · Layout — header, hero, numbered sections, prose, footer */
 @import "./brutalist/layout.css";
 
-/* The contact gate + its chess board */
+/* 4 · Blocks — core UI components */
+@import "./styles/blocks/c-btn.css";
+@import "./styles/blocks/c-badge.css";
+@import "./styles/blocks/c-tag.css";
+@import "./styles/blocks/c-card.css";
+@import "./styles/blocks/c-callout.css";
+@import "./styles/blocks/c-input.css";
+@import "./styles/blocks/c-field.css";
+
+/* 4 · Blocks — the contact gate + its chess board */
 @import "./styles/blocks/c-gate.css";
 @import "./styles/blocks/c-board.css";
