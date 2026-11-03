@@ -44,6 +44,8 @@ jobs:
           path: |
             deps
             _build
+            priv/native
+            native/chess_nif/target
           key: mix-${{ runner.os }}-1.19.5-28.3.1-${{ hashFiles('mix.lock') }}
           restore-keys: mix-${{ runner.os }}-1.19.5-28.3.1-
       - run: mix deps.get
@@ -54,7 +56,7 @@ jobs:
 
   image:
     needs: test
-    if: github.ref == 'refs/heads/main'
+    if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     permissions:
@@ -63,6 +65,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - uses: docker/login-action@v4
+        if: github.ref == 'refs/heads/main'
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
@@ -72,7 +75,7 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           context: .
-          push: true
+          push: ${{ github.ref == 'refs/heads/main' }}
           platforms: linux/amd64
           tags: |
             ghcr.io/braidonw/braidonwhatley:${{ github.sha }}
@@ -83,6 +86,7 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
       - name: Summarise digest
+        if: github.ref == 'refs/heads/main'
         env:
           DIGEST: ${{ steps.build.outputs.digest }}
         run: echo "Pushed ghcr.io/braidonw/braidonwhatley@$DIGEST" >> "$GITHUB_STEP_SUMMARY"
